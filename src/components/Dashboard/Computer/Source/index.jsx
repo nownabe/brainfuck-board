@@ -2,12 +2,23 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-const c = ({ source }) => (
+const c = ({ programCounter, source }) => (
   <div id="source">
-    <pre>{source}</pre>
+    <pre>
+      {
+        source.split("").map((c, i) => (
+          <span
+            key={`source${i}`}
+            className={programCounter === i ? "current-instruction" : ""}
+          >
+            {c}
+          </span>
+        ))
+      }
+    </pre>
   </div>
 );
 
 export default connect(
-  ({ source }) => ({ source })
+  ({ programCounter, source }) => ({ programCounter, source })
 )(c);
