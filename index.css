@@ -7,3 +7,12 @@
   font-weight: bold;
   color: #d00;
 }
+
+textarea {
+  font-family: monaco;
+  height: 35rem;
+}
+
+pre {
+  font-family: monaco;
+}
