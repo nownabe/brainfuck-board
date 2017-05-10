@@ -9,8 +9,10 @@ const initialSource = `+++++++++
 -.<++++++++.--------.+++.------.-
 -------.>+.`
 
+const initialMemory = new Array(16).fill(0);
+
 const initialState = {
-  memory: [],
+  memory: initialMemory,
   output: "",
   pointer: 0,
   programCounter: 0,
