@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions";
-import { changeSource, step, run } from "actions";
+import { changeSource, step, run, reset } from "actions";
 
 import interpreter from "interpreter";
 
@@ -25,4 +25,5 @@ export default handleActions({
   },
   [step]: { next: (state, { payload }) => (payload) },
   [run]: { next: (state, { payload }) => (payload) },
+  [reset]: { next: () => (initialState) },
 }, initialState)
