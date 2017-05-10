@@ -9,7 +9,8 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
-    "redux-actions": "^2.0.2"
+    "redux-actions": "^2.0.2",
+    "styled-components": "^1.4.6"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
