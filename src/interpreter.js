@@ -11,7 +11,7 @@ const CLOSE = "]";
 
 export default class {
   constructor({ memory, output, pointer, programCounter, source }) {
-    this.memory = memory;
+    this.memory = memory.slice();
     this.output = output;
     this.pointer = pointer;
     this.programCounter = programCounter;
