@@ -23,16 +23,6 @@ export default handleActions({
       Object.assign({}, state, { source: payload })
     )
   },
-  [step]: {
-    next: (state, { payload }) => {
-      console.log(payload)
-      return payload
-    }
-  },
-  [run]: {
-    next: (state, { payload }) => {
-      console.log(payload)
-      return payload
-    }
-  },
+  [step]: { next: (state, { payload }) => (payload) },
+  [run]: { next: (state, { payload }) => (payload) },
 }, initialState)
