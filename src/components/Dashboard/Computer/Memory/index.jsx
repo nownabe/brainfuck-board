@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const c = ({ memory }) => (
+const c = ({ memory, pointer }) => (
   <table id="memory" className="table is-narrow is-striped">
     <thead>
       <tr>
@@ -14,7 +14,9 @@ const c = ({ memory }) => (
       {
         memory.map((v, i) => (
           <tr key={`addr${i}`}>
-            <td>{i}</td>
+            <td className={pointer === i ? "pointed" : ""}>
+              {i}{pointer === i ? "*" : ""}
+            </td>
             <td>{v}</td>
             <td>{String.fromCharCode(v)}</td>
           </tr>
@@ -25,5 +27,5 @@ const c = ({ memory }) => (
 )
 
 export default connect(
-  ({ memory }) => ({ memory })
+  ({ memory, pointer }) => ({ memory, pointer })
 )(c);
