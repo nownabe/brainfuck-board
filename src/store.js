@@ -3,5 +3,5 @@ import reducer from 'reducers';
 
 export default createStore(
   reducer,
-  applyMiddleware()
+  applyMiddleware(),
 );
