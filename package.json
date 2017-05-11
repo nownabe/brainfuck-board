@@ -2,6 +2,7 @@
   "name": "brainfuck-js",
   "private": true,
   "scripts": {
+    "build": "npm run lint && webpack -p",
     "lint": "eslint --fix src",
     "start": "webpack-dev-server --inline --progress --hot"
   },
