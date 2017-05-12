@@ -101,6 +101,10 @@ export default class {
     while (this.programCounter <= this.source.length) this.tick();
   }
 
+  isFinished() {
+    return this.programCounter > this.source.length;
+  }
+
   state() {
     return ({
       memory: this.memory,
