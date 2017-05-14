@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
-import { desktop, normal, navHeight } from "styles/size";
+import { normal, navHeight } from "styles/size";
 import { white, primary, textGray, linkHover } from "styles/color";
 
 const Header = styled.header`
@@ -57,7 +57,16 @@ const Title = styled.h1`
   }
 `
 
-const TabLink = styled.a`
+interface TabLinkProps {
+  active: boolean;
+  className?: string;
+  children: string;
+}
+const TabLink: React.StatelessComponent<TabLinkProps> = (props) => (
+  <a className={props.className}>{props.children}</a>
+)
+
+const StyledTabLink = styled(TabLink)`
   align-items: center;
   display: flex;
   flwx-grow: 0;
@@ -65,9 +74,9 @@ const TabLink = styled.a`
   font-size: ${normal};
   justify-content: center;
   line-height: 1.5;
-  color: ${({ active }) => (active ? primary : textGray)};
+  color: ${({ active }: { active: boolean }) => (active ? primary : textGray)};
   border-bottom: 1px solid transparent;
-  ${({ active }) => (
+  ${({ active }: { active: boolean }) => (
     active ?
       `border-bottom: 3px solid ${primary};
       padding-bottom: calc(0.75rem - 3px);`
@@ -82,7 +91,7 @@ const TabLink = styled.a`
   padding-top: calc(0.75rem - 1px);
 
   &:hover {
-    color: ${({ active }) => (active ? primary : linkHover)};
+    color: ${({ active }: { active: boolean }) => (active ? primary : linkHover)};
     border-bottom-color: ${primary};
   }
 `
@@ -93,8 +102,8 @@ export default () => (
       <Container>
         <Left>
           <Title>Brainf*ck Board</Title>
-          <TabLink active>Board</TabLink>
-          <TabLink>Ranking</TabLink>
+          <StyledTabLink active={true}>Board</StyledTabLink>
+          <StyledTabLink active={false}>Ranking</StyledTabLink>
         </Left>
       </Container>
     </Header>

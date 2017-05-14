@@ -1,17 +1,17 @@
 module.exports = {
   context: __dirname + "/src",
-  entry: "./index.js",
+  entry: "./index.ts",
   output: {
     path: __dirname,
     filename: "bundle.js"
   },
   module: {
     loaders: [
-      { test: /(\.js|\.jsx)$/, exclude: /node_modules/, loader: "babel-loader" }
+      { test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader" }
     ]
   },
   resolve: {
     modules: [__dirname + "/src", __dirname + "/node_modules"],
-    extensions: [".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js"]
   }
 }

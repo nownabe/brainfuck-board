@@ -1,9 +1,10 @@
-import React from "react";
+import * as React from "react";
+import { Dispatch, Action } from "redux";
 import { connect } from "react-redux";
 
-import { reset } from "actions";
+import { reset } from "actions/interpreter";
 
-const c = ({ dispatch }) => {
+const c = ({ dispatch }: { dispatch: Dispatch<Action>}) => {
   const onClick = () => {
     dispatch(reset())
   };

@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 
 import { connect } from "react-redux";
 
-const c = ({ programCounter, source }) => (
+const c = ({ programCounter, source }: { programCounter: number, source: string }) => (
   <div id="source">
     <pre>
       {

@@ -9,8 +9,26 @@ const WRITE = '.';
 const OPEN = '[';
 const CLOSE = ']';
 
+interface InterpreterState {
+  memory: Array<number>;
+  output: string;
+  pointer: number;
+  programCounter: number;
+}
+type Instructions = { [key: string]: () => void }
+
 export default class {
-  constructor({ memory, output, pointer, programCounter, source }) {
+  memory: Array<number>;
+  output: string;
+  pointer: number;
+  programCounter: number;
+  source: string;
+  ops: Instructions;
+
+  constructor(
+    { memory, output, pointer, programCounter }: InterpreterState,
+    source: string
+  ) {
     this.memory = memory.slice();
     this.output = output;
     this.pointer = pointer;
@@ -28,7 +46,7 @@ export default class {
     this.ops[CLOSE] = this.close.bind(this);
   }
 
-  next() {
+  next(): void {
     this.pointer++;
   }
 
@@ -111,7 +129,6 @@ export default class {
       output: this.output,
       pointer: this.pointer,
       programCounter: this.programCounter,
-      source: this.source,
     });
   }
 }
