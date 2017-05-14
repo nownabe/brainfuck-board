@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
+    "baseUrl": "./src",
     "jsx": "react",
     "lib": ["dom", "es2017"],
     "module": "es2015",
