@@ -6,12 +6,12 @@ const c = ({ programCounter, source }: { programCounter: number, source: string 
   <div id="source">
     <pre>
       {
-        source.split("").map((c, i) => (
+        source.split("").map((char, i) => (
           <span
             key={`source${i}`}
             className={programCounter === i ? "current-instruction" : ""}
           >
-            {c}
+            {char}
           </span>
         ))
       }
@@ -20,5 +20,5 @@ const c = ({ programCounter, source }: { programCounter: number, source: string 
 );
 
 export default connect(
-  ({ programCounter, source }) => ({ programCounter, source })
+  ({ programCounter, source }) => ({ programCounter, source }),
 )(c);

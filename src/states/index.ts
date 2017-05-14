@@ -1,13 +1,13 @@
-export type Interpreter = {
-    memory: Array<number>;
+export interface Interpreter {
+    memory: number[];
     output: string;
     pointer: number;
     programCounter: number;
-};
+}
 
 export type Source = string;
 
-export type State = {
+export interface State {
   interpreter: Interpreter;
   source: Source;
-};
+}

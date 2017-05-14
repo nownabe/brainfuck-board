@@ -1,35 +1,29 @@
 import * as React from "react";
-import { Dispatch, Action } from "redux";
 import { connect } from "react-redux";
+import { Action, Dispatch } from "redux";
 
-import interpreter from "interpreter";
 import { step } from "actions/interpreter";
-import { State, Interpreter, Source } from "states";
+import interpreter from "interpreter";
+import { Interpreter, Source, State } from "states";
 
-type TStateProps = {
+interface TStateProps {
   interpreter: Interpreter;
   source: Source;
 }
-type TDispatchProps = {
+interface TDispatchProps {
   dispatch: Dispatch<Action>;
 }
-type TOwnProps = {};
+interface TOwnProps {}
 type Props = TStateProps & TDispatchProps & TOwnProps;
 
 const mapStateToProps = (state: State) => ({
   interpreter: state.interpreter,
   source: state.source,
-})
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch })
+});
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 
 class Step extends React.Component<Props, {}> {
-  onClick() {
-    const ip = new interpreter(this.props.interpreter, this.props.source);
-    ip.tick();
-    this.props.dispatch(step(ip.state()));
-  }
-
-  render() {
+  public render() {
     return (
       <button
         className="button is-primary"
@@ -37,7 +31,13 @@ class Step extends React.Component<Props, {}> {
       >
         Step
       </button>
-    )
+    );
+  }
+
+  private onClick() {
+    const ip = new interpreter(this.props.interpreter, this.props.source);
+    ip.tick();
+    this.props.dispatch(step(ip.state()));
   }
 }
 

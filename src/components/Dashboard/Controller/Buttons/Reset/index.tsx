@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Dispatch, Action } from "redux";
 import { connect } from "react-redux";
+import { Action, Dispatch } from "redux";
 
 import { reset } from "actions/interpreter";
 
 const c = ({ dispatch }: { dispatch: Dispatch<Action>}) => {
   const onClick = () => {
-    dispatch(reset())
+    dispatch(reset());
   };
   return(
     <button
@@ -20,5 +20,5 @@ const c = ({ dispatch }: { dispatch: Dispatch<Action>}) => {
 
 export default connect(
   ({}) => ({}),
-  (dispatch) => ({ dispatch })
+  (dispatch) => ({ dispatch }),
 )(c);

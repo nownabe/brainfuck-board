@@ -1,33 +1,33 @@
 // brainfuck interpreter
 
-const NEXT = '>';
-const PREV = '<';
-const INC = '+';
-const DEC = '-';
-const READ = ','; // Not implemented
-const WRITE = '.';
-const OPEN = '[';
-const CLOSE = ']';
+const NEXT = ">";
+const PREV = "<";
+const INC = "+";
+const DEC = "-";
+const READ = ","; // Not implemented
+const WRITE = ".";
+const OPEN = "[";
+const CLOSE = "]";
 
 interface InterpreterState {
-  memory: Array<number>;
+  memory: number[];
   output: string;
   pointer: number;
   programCounter: number;
 }
-type Instructions = { [key: string]: () => void }
+interface Instructions { [key: string]: () => void; }
 
 export default class {
-  memory: Array<number>;
-  output: string;
-  pointer: number;
-  programCounter: number;
-  source: string;
-  ops: Instructions;
+  private memory: number[];
+  private output: string;
+  private pointer: number;
+  private programCounter: number;
+  private source: string;
+  private ops: Instructions;
 
   constructor(
     { memory, output, pointer, programCounter }: InterpreterState,
-    source: string
+    source: string,
   ) {
     this.memory = memory.slice();
     this.output = output;
@@ -46,31 +46,54 @@ export default class {
     this.ops[CLOSE] = this.close.bind(this);
   }
 
-  next(): void {
+  public tick() {
+    const op = this.ops[this.opcode()];
+    if (op) { op(); }
+    this.programCounter++;
+  }
+
+  public run() {
+    while (this.programCounter <= this.source.length) { this.tick(); }
+  }
+
+  public isFinished() {
+    return this.programCounter > this.source.length;
+  }
+
+  public state() {
+    return ({
+      memory: this.memory,
+      output: this.output,
+      pointer: this.pointer,
+      programCounter: this.programCounter,
+    });
+  }
+
+  private next(): void {
     this.pointer++;
   }
 
-  prev() {
+  private prev() {
     this.pointer--;
   }
 
-  inc() {
+  private inc() {
     this.memory[this.pointer] = this.value() + 1;
   }
 
-  dec() {
+  private dec() {
     this.memory[this.pointer] = this.value() - 1;
   }
 
-  read() {
+  private read() {
     console.error(`Read operation is not implemented yet. ${this}`);
   }
 
-  write() {
+  private write() {
     this.output += String.fromCharCode(this.value());
   }
 
-  open() {
+  private open() {
     if (this.value() === 0) {
       let n = 0;
       while (true) {
@@ -79,13 +102,13 @@ export default class {
           n++;
         } else if (this.opcode() === CLOSE) {
           n--;
-          if (n < 0) break;
+          if (n < 0) { break; }
         }
       }
     }
   }
 
-  close() {
+  private close() {
     if (this.value() !== 0) {
       let n = 0;
       while (true) {
@@ -94,41 +117,18 @@ export default class {
           n++;
         } else if (this.opcode() === OPEN) {
           n--;
-          if (n < 0) break;
+          if (n < 0) { break; }
         }
       }
     }
   }
 
-  opcode() {
+  private opcode() {
     return this.source[this.programCounter];
   }
 
-  value() {
-    if (!this.memory[this.pointer]) this.memory[this.pointer] = 0;
+  private value() {
+    if (!this.memory[this.pointer]) { this.memory[this.pointer] = 0; }
     return this.memory[this.pointer];
-  }
-
-  tick() {
-    const op = this.ops[this.opcode()];
-    if (op) op();
-    this.programCounter++;
-  }
-
-  run() {
-    while (this.programCounter <= this.source.length) this.tick();
-  }
-
-  isFinished() {
-    return this.programCounter > this.source.length;
-  }
-
-  state() {
-    return ({
-      memory: this.memory,
-      output: this.output,
-      pointer: this.pointer,
-      programCounter: this.programCounter,
-    });
   }
 }

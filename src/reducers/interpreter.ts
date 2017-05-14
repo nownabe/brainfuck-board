@@ -1,12 +1,12 @@
-import { handleActions, Action } from 'redux-actions';
-import { run, step, reset } from 'actions/interpreter';
+import { reset, run, step } from "actions/interpreter";
+import { Action, handleActions } from "redux-actions";
 import { Interpreter as State } from "states";
 
 type Payload = State;
 
 const initialState: State = {
   memory: new Array(16).fill(0),
-  output: '',
+  output: "",
   pointer: 0,
   programCounter: 0,
 };
@@ -14,7 +14,7 @@ const initialState: State = {
 const next = (state: State, action: Action<Payload>) => (action.payload || initialState);
 
 export default handleActions<State, Payload>({
-    [run.toString()]: { next: next },
-    [step.toString()]: { next: next },
+    [run.toString()]: { next },
+    [step.toString()]: { next },
     [reset.toString()]: { next: () => initialState },
 }, initialState);

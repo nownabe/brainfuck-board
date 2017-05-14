@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-const c = ({ memory, pointer }: { memory: Array<number>, pointer: number }) => (
+const c = ({ memory, pointer }: { memory: number[], pointer: number }) => (
   <table id="memory" className="table is-narrow is-striped">
     <thead>
       <tr>
@@ -24,11 +24,11 @@ const c = ({ memory, pointer }: { memory: Array<number>, pointer: number }) => (
       }
     </tbody>
   </table>
-)
+);
 
 export default connect(
   ({ interpreter }) => ({
     memory: interpreter.memory,
     pointer: interpreter.pointer,
-  })
+  }),
 )(c);

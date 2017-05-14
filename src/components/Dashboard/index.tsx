@@ -1,7 +1,7 @@
-import * as React from "react"
-import Controller from "./Controller"
-import Computer from "./Computer"
 import Header from "components/common/Header";
+import * as React from "react";
+import Computer from "./Computer";
+import Controller from "./Controller";
 
 export default () => (
   <div>
@@ -11,4 +11,4 @@ export default () => (
       <Computer />
     </div>
   </div>
-)
+);

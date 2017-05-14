@@ -1,5 +1,5 @@
-import { createAction } from 'redux-actions';
+import { createAction } from "redux-actions";
 
 const pass = <T>(payload: T) => (payload);
 
-export const change = createAction<string, string>('SOURCE/CHANGE', pass);
+export const change = createAction<string, string>("SOURCE/CHANGE", pass);

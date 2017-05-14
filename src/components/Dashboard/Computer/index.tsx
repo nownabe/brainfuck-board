@@ -1,8 +1,8 @@
 import * as React from "react";
 
+import Memory from "./Memory";
 import Output from "./Output";
 import Source from "./Source";
-import Memory from "./Memory";
 
 export default () => (
   <div className="column">

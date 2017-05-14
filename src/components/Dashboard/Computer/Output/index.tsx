@@ -9,5 +9,5 @@ const c = ({ output }: { output: string }) => (
 );
 
 export default connect(
-  ({ interpreter }) => ({ output: interpreter.output })
+  ({ interpreter }) => ({ output: interpreter.output }),
 )(c);

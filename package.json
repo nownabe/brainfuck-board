@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "npm run lint && webpack -p",
-    "lint": "eslint --fix src",
+    "lint": "tslint -c tslint.json --fix src/**/*.{ts,tsx}",
     "start": "webpack-dev-server --inline --progress --hot"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@types/redux-actions": "^1.2.4",
     "redux-devtools": "^3.4.0",
     "ts-loader": "^2.0.3",
+    "tslint": "^5.2.0",
     "typescript": "^2.3.2",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"

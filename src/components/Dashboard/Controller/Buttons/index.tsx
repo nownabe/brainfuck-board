@@ -1,8 +1,8 @@
 import * as React from "react";
 
+import Reset from "./Reset";
 import Run from "./Run";
 import Step from "./Step";
-import Reset from "./Reset";
 
 export default () => (
   <div id="controller">
@@ -10,4 +10,4 @@ export default () => (
     <Step />
     <Reset />
   </div>
-)
+);

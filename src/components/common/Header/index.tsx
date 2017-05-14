@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { normal, navHeight } from "styles/size";
-import { white, primary, textGray, linkHover } from "styles/color";
+import { linkHover, primary, textGray, white } from "styles/color";
+import { navHeight, normal } from "styles/size";
 
 const Header = styled.header`
   & {
@@ -27,7 +27,7 @@ const Container = styled.div`
     min-height: ${navHeight};
     width: 100%;
   }
-`
+`;
 
 const Left = styled.div`
   & {
@@ -41,7 +41,7 @@ const Left = styled.div`
     justify-content: flex-start;
     white-space: nowrap;
   }
-`
+`;
 
 const Title = styled.h1`
   & {
@@ -55,7 +55,7 @@ const Title = styled.h1`
     padding: 0.5rem 0.75rem;
     font-weight: bold;
   }
-`
+`;
 
 interface TabLinkProps {
   active: boolean;
@@ -64,7 +64,7 @@ interface TabLinkProps {
 }
 const TabLink: React.StatelessComponent<TabLinkProps> = (props) => (
   <a className={props.className}>{props.children}</a>
-)
+);
 
 const StyledTabLink = styled(TabLink)`
   align-items: center;
@@ -94,7 +94,7 @@ const StyledTabLink = styled(TabLink)`
     color: ${({ active }: { active: boolean }) => (active ? primary : linkHover)};
     border-bottom-color: ${primary};
   }
-`
+`;
 
 export default () => (
   <div>
@@ -108,4 +108,4 @@ export default () => (
       </Container>
     </Header>
   </div>
-)
+);
