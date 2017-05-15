@@ -134,7 +134,7 @@ export default class {
     if (!c) {
       this.programCounter = this.source.length;
       // TODO: Handle Error
-      return 0;
+      return -1;
     }
     return c.charCodeAt(0);
   }
