@@ -1,4 +1,5 @@
 export interface Interpreter {
+    inputPointer: number;
     memory: number[];
     output: string;
     pointer: number;
@@ -7,7 +8,10 @@ export interface Interpreter {
 
 export type Source = string;
 
+export type Input = string;
+
 export interface State {
   interpreter: Interpreter;
   source: Source;
+  input: Input;
 }

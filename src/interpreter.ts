@@ -1,3 +1,5 @@
+import { Interpreter as InterpreterState } from "states";
+
 const NEXT = ">";
 const PREV = "<";
 const INC = "+";
@@ -7,31 +9,32 @@ const WRITE = ".";
 const OPEN = "[";
 const CLOSE = "]";
 
-interface InterpreterState {
-  memory: number[];
-  output: string;
-  pointer: number;
-  programCounter: number;
-}
 interface Instructions { [key: string]: () => void; }
 
 export default class {
+  private inputPointer: number;
   private memory: number[];
   private output: string;
   private pointer: number;
   private programCounter: number;
+
   private source: string;
+  private input: string;
+
   private instructions: Instructions;
 
   constructor(
-    { memory, output, pointer, programCounter }: InterpreterState,
+    { inputPointer, memory, output, pointer, programCounter }: InterpreterState,
     source: string,
+    input: string,
   ) {
+    this.inputPointer = inputPointer;
     this.memory = memory.slice();
     this.output = output;
     this.pointer = pointer;
     this.programCounter = programCounter;
     this.source = source;
+    this.input = input;
 
     this.instructions = {};
     this.instructions[NEXT] = this.next.bind(this);
@@ -60,6 +63,7 @@ export default class {
 
   public state() {
     return ({
+      inputPointer: this.inputPointer,
       memory: this.memory,
       output: this.output,
       pointer: this.pointer,
@@ -84,7 +88,7 @@ export default class {
   }
 
   private read() {
-    // Not Implemented
+    this.memory[this.pointer] = this.getChar();
   }
 
   private write() {
@@ -123,6 +127,16 @@ export default class {
 
   private code() {
     return this.source[this.programCounter];
+  }
+
+  private getChar() {
+    const c = this.input[this.inputPointer++];
+    if (!c) {
+      this.programCounter = this.source.length;
+      // TODO: Handle Error
+      return 0;
+    }
+    return c.charCodeAt(0);
   }
 
   private value() {

@@ -4,9 +4,10 @@ import { Action, Dispatch } from "redux";
 
 import { step } from "actions/interpreter";
 import interpreter from "interpreter";
-import { Interpreter, Source, State } from "states";
+import { Input, Interpreter, Source, State } from "states";
 
 interface TStateProps {
+  input: Input;
   interpreter: Interpreter;
   source: Source;
 }
@@ -17,6 +18,7 @@ interface TOwnProps {}
 type Props = TStateProps & TDispatchProps & TOwnProps;
 
 const mapStateToProps = (state: State) => ({
+  input: state.input,
   interpreter: state.interpreter,
   source: state.source,
 });
@@ -35,7 +37,7 @@ class Step extends React.Component<Props, {}> {
   }
 
   private onClick() {
-    const ip = new interpreter(this.props.interpreter, this.props.source);
+    const ip = new interpreter(this.props.interpreter, this.props.source, this.props.input);
     ip.tick();
     this.props.dispatch(step(ip.state()));
   }

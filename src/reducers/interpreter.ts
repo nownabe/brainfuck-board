@@ -5,6 +5,7 @@ import { Interpreter as State } from "states";
 type Payload = State;
 
 const initialState: State = {
+  inputPointer: 0,
   memory: new Array(16).fill(0),
   output: "",
   pointer: 0,
