@@ -84,7 +84,7 @@ export default class {
   }
 
   private read() {
-    console.error(`Read operation is not implemented yet. ${this}`);
+    // Not Implemented
   }
 
   private write() {
