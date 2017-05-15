@@ -3,10 +3,10 @@ import * as React from "react";
 import { Route } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 
-import Dashboard from "components/Dashboard";
+import Board from "components/Board";
 
 export default ({ history }: { history: History }) => (
     <ConnectedRouter history={history}>
-        <Route path="/" component={Dashboard} />
+        <Route path="/" component={Board} />
     </ConnectedRouter>
 );
