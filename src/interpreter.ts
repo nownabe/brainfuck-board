@@ -1,5 +1,3 @@
-// brainfuck interpreter
-
 const NEXT = ">";
 const PREV = "<";
 const INC = "+";
@@ -23,7 +21,7 @@ export default class {
   private pointer: number;
   private programCounter: number;
   private source: string;
-  private ops: Instructions;
+  private instructions: Instructions;
 
   constructor(
     { memory, output, pointer, programCounter }: InterpreterState,
@@ -35,20 +33,20 @@ export default class {
     this.programCounter = programCounter;
     this.source = source;
 
-    this.ops = {};
-    this.ops[NEXT] = this.next.bind(this);
-    this.ops[PREV] = this.prev.bind(this);
-    this.ops[INC] = this.inc.bind(this);
-    this.ops[DEC] = this.dec.bind(this);
-    this.ops[READ] = this.read.bind(this);
-    this.ops[WRITE] = this.write.bind(this);
-    this.ops[OPEN] = this.open.bind(this);
-    this.ops[CLOSE] = this.close.bind(this);
+    this.instructions = {};
+    this.instructions[NEXT] = this.next.bind(this);
+    this.instructions[PREV] = this.prev.bind(this);
+    this.instructions[INC] = this.inc.bind(this);
+    this.instructions[DEC] = this.dec.bind(this);
+    this.instructions[READ] = this.read.bind(this);
+    this.instructions[WRITE] = this.write.bind(this);
+    this.instructions[OPEN] = this.open.bind(this);
+    this.instructions[CLOSE] = this.close.bind(this);
   }
 
   public tick() {
-    const op = this.ops[this.opcode()];
-    if (op) { op(); }
+    const instruction = this.instructions[this.code()];
+    if (instruction) { instruction(); }
     this.programCounter++;
   }
 
@@ -98,9 +96,9 @@ export default class {
       let n = 0;
       while (true) {
         this.programCounter++;
-        if (this.opcode() === OPEN) {
+        if (this.code() === OPEN) {
           n++;
-        } else if (this.opcode() === CLOSE) {
+        } else if (this.code() === CLOSE) {
           n--;
           if (n < 0) { break; }
         }
@@ -113,9 +111,9 @@ export default class {
       let n = 0;
       while (true) {
         this.programCounter--;
-        if (this.opcode() === CLOSE) {
+        if (this.code() === CLOSE) {
           n++;
-        } else if (this.opcode() === OPEN) {
+        } else if (this.code() === OPEN) {
           n--;
           if (n < 0) { break; }
         }
@@ -123,7 +121,7 @@ export default class {
     }
   }
 
-  private opcode() {
+  private code() {
     return this.source[this.programCounter];
   }
 
