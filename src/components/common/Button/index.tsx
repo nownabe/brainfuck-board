@@ -47,4 +47,11 @@ export default styled(Button)`
     &:focus {
         outline: 0;
     }
+
+
+    margin-right: 0.4rem;
+
+    &:last-child {
+        margin-right: 0;
+    }
 `;
