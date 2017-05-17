@@ -2,6 +2,8 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
 
+import PrimaryButton from "components/common/PrimaryButton";
+
 import { step } from "actions/interpreter";
 import interpreter from "interpreter";
 import { Input, Interpreter, Source, State } from "states";
@@ -27,12 +29,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 class Step extends React.Component<Props, {}> {
   public render() {
     return (
-      <button
-        className="button is-primary"
-        onClick={this.onClick.bind(this)}
-      >
+      <PrimaryButton onClick={this.onClick.bind(this)}>
         Step
-      </button>
+      </PrimaryButton>
     );
   }
 
