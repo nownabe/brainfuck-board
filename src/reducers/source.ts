@@ -1,6 +1,7 @@
 import { Action, handleActions } from "redux-actions";
 import { Source as State } from "states";
-import { change } from "../actions/source";
+
+import { change } from "actions/source";
 
 type Payload = State;
 
