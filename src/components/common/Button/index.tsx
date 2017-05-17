@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import { grayDarker, grayLight, grayLighter, white } from "styles/color";
+
 interface Props {
     className?: string;
     children: string;
@@ -25,9 +27,9 @@ export default styled(Button)`
     position: relative;
     vertical-align: top;
     user-select: none;
-    background-color: #fff;
-    border-color: #dbdbdb;
-    color: #363636;
+    background-color: ${white};
+    border-color: ${grayLighter};
+    color: ${grayDarker};
     cursor: pointer;
     box-pack: center;
     justify-content: center;
@@ -40,14 +42,13 @@ export default styled(Button)`
     padding-top: 0.35em;
 
     &:hover {
-        border-color: #b5b5b5;
-        color: #363636;
+        border-color: ${grayLight};
+        color: ${grayDarker};
     }
 
     &:focus {
         outline: 0;
     }
-
 
     margin-right: 0.4rem;
 

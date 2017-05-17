@@ -2,6 +2,8 @@
 
 export const grayDarker = "#363636";
 export const gray = "#7a7a7a";
+export const grayLight = "#b5b5b5";
+export const grayLighter = "#dbdbdb";
 
 export const white = "#fff";
 
