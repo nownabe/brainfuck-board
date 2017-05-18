@@ -1,4 +1,4 @@
 import Textarea from "components/common/Textarea";
-import Dark from "components/style/Dark";
+import Dark from "styles/Dark";
 
 export default Dark(Textarea);

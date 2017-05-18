@@ -1,4 +1,4 @@
 import Button from "components/common/Button";
-import Primary from "components/style/Primary";
+import Primary from "styles/Primary";
 
 export default Primary(Button);
