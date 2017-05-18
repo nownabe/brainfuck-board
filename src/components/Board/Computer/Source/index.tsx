@@ -20,5 +20,5 @@ const c = ({ programCounter, source }: { programCounter: number, source: string 
 );
 
 export default connect(
-  ({ programCounter, source }) => ({ programCounter, source }),
+  ({ interpreter, source }) => ({ programCounter: interpreter.programCounter, source }),
 )(c);
