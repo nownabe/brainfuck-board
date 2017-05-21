@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 import Nav from "bulma/components/Nav";
 import Container from "bulma/components/Nav/Container";
+import Item from "bulma/components/Nav/Item";
 import Left from "bulma/components/Nav/Left";
+import Link from "bulma/components/Nav/Link";
 
 const Title = styled.h1`font-weight: bold;`;
 
@@ -12,11 +14,11 @@ export default () => (
     <Nav hasShadow>
       <Container>
         <Left>
-          <div className="nav-item">
+          <Item>
             <Title>Brainf*ck Board</Title>
-          </div>
-          <a href="" className="nav-item is-tab is-active">Board</a>
-          <a href="" className="nav-item is-tab">Ranking</a>
+          </Item>
+          <Link isTab isActive>Board</Link>
+          <Link isTab>Ranking</Link>
         </Left>
       </Container>
     </Nav>
