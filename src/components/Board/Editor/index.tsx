@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import Editor from "./Editor";
 import Input from "./Input";
+import Source from "./Source";
 
 export default () => (
   <div>
-    <Editor />
+    <Source />
     <Input />
   </div>
 );

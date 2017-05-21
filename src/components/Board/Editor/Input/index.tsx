@@ -1,16 +1,12 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
-import styled from "styled-components";
 
 import { change } from "actions/input";
 import { Input } from "states";
 
 import DarkTextarea from "components/common/DarkTextarea";
-
-const Container = styled.div`
-    margin-top: 1rem;
-`;
+import Container from "components/common/MiniContainer";
 
 interface TStateProps {
     input: Input;

@@ -1,9 +1,11 @@
 import * as React from "react";
-
 import { connect } from "react-redux";
 
+import Container from "components/common/MiniContainer";
+
 const c = ({ programCounter, source }: { programCounter: number, source: string }) => (
-  <div id="source">
+  <Container>
+    <h3>Next Instruction</h3>
     <pre>
       {
         source.split("").map((char, i) => (
@@ -16,7 +18,7 @@ const c = ({ programCounter, source }: { programCounter: number, source: string 
         ))
       }
     </pre>
-  </div>
+  </Container>
 );
 
 export default connect(

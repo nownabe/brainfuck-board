@@ -6,13 +6,10 @@ import styled from "styled-components";
 import { change } from "actions/source";
 
 import DarkTextarea from "components/common/DarkTextarea";
+import Container from "components/common/MiniContainer";
 
 const Textarea = styled(DarkTextarea)`
   min-height: 480px;
-`;
-
-const Container = styled.div`
-  margin-top: 1rem;
 `;
 
 interface Props {
