@@ -1,15 +1,13 @@
 import * as React from "react";
 
-import Column from "bulma/grid/Column";
-
-import Buttons from "./Buttons";
-import Editor from "./Editor";
-import Input from "./Input";
+import Reset from "./Reset";
+import Run from "./Run";
+import Step from "./Step";
 
 export default () => (
-  <Column>
-    <Buttons />
-    <Editor />
-    <Input />
-  </Column>
+  <div>
+    <Run />
+    <Step />
+    <Reset />
+  </div>
 );
