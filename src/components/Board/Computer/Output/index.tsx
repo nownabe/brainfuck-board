@@ -7,7 +7,7 @@ import Container from "components/common/MiniContainer";
 const c = ({ output }: { output: string }) => (
   <Container>
     <h3>Output</h3>
-    <DarkTextarea value={output} />
+    <DarkTextarea value={output} disabled />
   </Container>
 );
 
