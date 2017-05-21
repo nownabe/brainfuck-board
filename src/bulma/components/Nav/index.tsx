@@ -16,3 +16,15 @@ export default styled.nav`
         hasShadow ? "box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1)" : ""
     )}
 `;
+
+import Container from "./Container";
+import Item from "./Item";
+import Left from "./Left";
+import Link from "./Link";
+
+export {
+    Container,
+    Item,
+    Left,
+    Link,
+};

@@ -1,11 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import Nav from "bulma/components/Nav";
-import Container from "bulma/components/Nav/Container";
-import Item from "bulma/components/Nav/Item";
-import Left from "bulma/components/Nav/Left";
-import Link from "bulma/components/Nav/Link";
+import Nav, { Container, Item, Left, Link } from "bulma/components/Nav";
 
 const Title = styled.h1`font-weight: bold;`;
 
