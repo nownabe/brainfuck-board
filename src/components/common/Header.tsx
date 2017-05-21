@@ -1,33 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { linkHover, primary, textGray, white } from "styles/color";
-import { navHeight, normal } from "styles/size";
+import Nav from "bulma/components/Nav";
+import Container from "bulma/components/Nav/Container";
 
-const Header = styled.header`
-  & {
-    align-items: stretch;
-    background-color: ${white};
-    display: flex;
-    height: ${navHeight};
-    position: relative;
-    text-align: center;
-    z-index: 10;
-    box-shadow: 0 2px 3px rgba(10, 10, 10, .1);
-  }
-`;
-
-const Container = styled.div`
-  & {
-    position: relative;
-    margin: 0 auto;
-    max-width: 1152px;
-    align-items: stretch;
-    display: flex;
-    min-height: ${navHeight};
-    width: 100%;
-  }
-`;
+import { linkHover, primary, textGray } from "styles/color";
+import { normal } from "styles/size";
 
 const Left = styled.div`
   & {
@@ -98,7 +76,7 @@ const StyledTabLink = styled(TabLink)`
 
 export default () => (
   <div>
-    <Header>
+    <Nav hasShadow>
       <Container>
         <Left>
           <Title>Brainf*ck Board</Title>
@@ -106,6 +84,6 @@ export default () => (
           <StyledTabLink active={false}>Ranking</StyledTabLink>
         </Left>
       </Container>
-    </Header>
+    </Nav>
   </div>
 );
