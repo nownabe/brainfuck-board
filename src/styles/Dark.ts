@@ -1,12 +1,12 @@
 import { ComponentClass, StatelessComponent } from "react";
 import styled from "styled-components";
 
-import { black, grayDark, grayDarker, grayLighter, info } from "styles/color";
+import { grayDark, grayDarker, info, white } from "styles/color";
 
 export default (component: StatelessComponent<any> | ComponentClass<any>) => (
     styled(component)`
-        background-color: ${black};
-        color: ${grayLighter};
+        background-color: ${grayDarker};
+        color: ${white};
         border-color: ${grayDarker};
 
         &:hover {
