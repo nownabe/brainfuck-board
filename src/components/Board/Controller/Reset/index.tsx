@@ -6,16 +6,16 @@ import Button from "components/common/Button";
 
 import { reset } from "actions/interpreter";
 
-const c = ({ dispatch }: { dispatch: Dispatch<Action>}) => {
+const c = ({ isRunning, dispatch }: { isRunning: boolean, dispatch: Dispatch<Action>}) => {
   const onClick = () => {
     dispatch(reset());
   };
   return(
-    <Button onClick={onClick}>Reset</Button>
+    <Button onClick={onClick} disabled={isRunning}>Reset</Button>
   );
 };
 
 export default connect(
-  ({}) => ({}),
+  ({ isRunning }) => ({ isRunning }),
   (dispatch) => ({ dispatch }),
 )(c);

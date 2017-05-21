@@ -20,5 +20,9 @@ export default (component: React.StatelessComponent<any> | React.ComponentClass<
             box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.25);
             color: ${white};
         }
+
+        &[disabled] {
+            color: red;
+        }
     `
 );

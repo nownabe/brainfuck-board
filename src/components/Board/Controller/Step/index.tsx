@@ -5,12 +5,14 @@ import { Action, Dispatch } from "redux";
 import PrimaryButton from "components/common/PrimaryButton";
 
 import { step } from "actions/interpreter";
+import { finish, start } from "actions/isRunning";
 import interpreter from "interpreter";
-import { Input, Interpreter, Source, State } from "states";
+import { Input, Interpreter, IsRunning, Source, State } from "states";
 
 interface TStateProps {
   input: Input;
   interpreter: Interpreter;
+  isRunning: IsRunning;
   source: Source;
 }
 interface TDispatchProps {
@@ -22,6 +24,7 @@ type Props = TStateProps & TDispatchProps & TOwnProps;
 const mapStateToProps = (state: State) => ({
   input: state.input,
   interpreter: state.interpreter,
+  isRunning: state.isRunning,
   source: state.source,
 });
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
@@ -29,16 +32,18 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 class Step extends React.Component<Props, {}> {
   public render() {
     return (
-      <PrimaryButton onClick={this.onClick.bind(this)}>
+      <PrimaryButton onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
         Step
       </PrimaryButton>
     );
   }
 
   private onClick() {
+    this.props.dispatch(start());
     const ip = new interpreter(this.props.interpreter, this.props.source, this.props.input);
     ip.tick();
     this.props.dispatch(step(ip.state()));
+    this.props.dispatch(finish());
   }
 }
 

@@ -4,6 +4,7 @@ import { Action, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { change } from "actions/source";
+import { IsRunning } from "states";
 
 import DarkTextarea from "components/common/DarkTextarea";
 import Container from "components/common/MiniContainer";
@@ -14,10 +15,11 @@ const Textarea = styled(DarkTextarea)`
 
 interface Props {
   dispatch: Dispatch<Action>;
+  isRunning: IsRunning;
   source: string;
 }
 
-const editor = ({ dispatch, source }: Props) => {
+const editor = ({ dispatch, isRunning, source }: Props) => {
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch(change(e.currentTarget.value));
   };
@@ -25,11 +27,11 @@ const editor = ({ dispatch, source }: Props) => {
   return (
     <Container>
       <h3>Source Code</h3>
-      <Textarea value={source} onChange={onChange} />
+      <Textarea value={source} onChange={onChange} disabled={isRunning} />
     </Container>
   );
 };
 
 export default connect(
-  ({ source }, ownProps) => ({ source }),
+  ({ source, isRunning }, ownProps) => ({ source, isRunning }),
 )(editor);

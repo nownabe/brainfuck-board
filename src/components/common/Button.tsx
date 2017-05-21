@@ -6,11 +6,12 @@ import { grayDarker, grayLight, grayLighter, white } from "styles/color";
 interface Props {
     className?: string;
     children: string;
+    disabled?: boolean;
     onClick: () => void;
 }
 
 const Button: React.StatelessComponent<Props> = (props) => (
-    <button className={props.className} onClick={props.onClick}>
+    <button className={props.className} onClick={props.onClick} disabled={props.disabled}>
         {props.children}
     </button>
 );
