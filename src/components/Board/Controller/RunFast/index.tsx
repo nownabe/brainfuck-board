@@ -4,7 +4,7 @@ import { Action, Dispatch } from "redux";
 
 import PrimaryButton from "components/common/PrimaryButton";
 
-import { run } from "actions/interpreter";
+import { step } from "actions/interpreter";
 import interpreter from "interpreter";
 import { Input, Interpreter, Source, State } from "states";
 
@@ -26,18 +26,29 @@ const mapStateToProps = (state: State) => ({
 });
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 
-class Run extends React.Component<Props, {}> {
+class RunFast extends React.Component<Props, {}> {
+  private ip: interpreter;
+
   public render() {
     return (
-      <PrimaryButton onClick={this.onClick.bind(this)}>Run</PrimaryButton>
+      <PrimaryButton onClick={this.onClick.bind(this)}>
+        Run Fast
+      </PrimaryButton>
     );
   }
 
   private onClick() {
-    const ip = new interpreter(this.props.interpreter, this.props.source, this.props.input);
-    ip.run();
-    this.props.dispatch(run(ip.state()));
+    this.ip = new interpreter(this.props.interpreter, this.props.source, this.props.input);
+    this.cycle();
+  }
+
+  private async cycle() {
+      setTimeout(() => {
+        this.ip.tick();
+        this.props.dispatch(step(this.ip.state()));
+        if (!this.ip.isFinished()) { this.cycle(); }
+      }, 10);
   }
 }
 
-export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(Run);
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(RunFast);
