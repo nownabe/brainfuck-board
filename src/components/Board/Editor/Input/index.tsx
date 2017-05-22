@@ -5,7 +5,7 @@ import { Action, Dispatch } from "redux";
 import { change } from "actions/input";
 import { Input, IsRunning } from "states";
 
-import DarkTextarea from "components/common/DarkTextarea";
+import Textarea from "bulma/elements/Textarea";
 import Container from "components/common/MiniContainer";
 
 interface TStateProps {
@@ -22,7 +22,7 @@ const c = ({ dispatch, input, isRunning }: TStateProps) => {
     return (
         <Container>
             <h3>Input</h3>
-            <DarkTextarea value={input} onChange={onChange} disabled={isRunning} />
+            <Textarea value={input} onChange={onChange} disabled={isRunning} />
         </Container>
     );
 };

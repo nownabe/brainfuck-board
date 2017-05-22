@@ -6,10 +6,10 @@ import styled from "styled-components";
 import { change } from "actions/source";
 import { IsRunning } from "states";
 
-import DarkTextarea from "components/common/DarkTextarea";
+import Textarea from "bulma/elements/Textarea";
 import Container from "components/common/MiniContainer";
 
-const Textarea = styled(DarkTextarea)`
+const TallTextarea = styled(Textarea)`
   min-height: 480px;
 `;
 
@@ -27,7 +27,7 @@ const editor = ({ dispatch, isRunning, source }: Props) => {
   return (
     <Container>
       <h3>Source Code</h3>
-      <Textarea value={source} onChange={onChange} disabled={isRunning} />
+      <TallTextarea value={source} onChange={onChange} disabled={isRunning} />
     </Container>
   );
 };
