@@ -14,7 +14,6 @@ export default () => (
             <Title>Brainf*ck Board</Title>
           </Item>
           <Link isTab isActive>Board</Link>
-          <Link isTab>Ranking</Link>
         </Left>
       </Container>
     </Nav>
