@@ -29,13 +29,13 @@ const mapStateToProps = (state: State) => ({
 });
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 
-class RunFast extends React.Component<Props, {}> {
+class AutoStepFast extends React.Component<Props, {}> {
   private ip: interpreter;
 
   public render() {
     return (
       <PrimaryButton onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
-        Run Fast
+        Auto Step (Fast)
       </PrimaryButton>
     );
   }
@@ -55,8 +55,8 @@ class RunFast extends React.Component<Props, {}> {
         } else {
             this.cycle();
         }
-      }, 10);
+      }, 5);
   }
 }
 
-export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(RunFast);
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(AutoStepFast);

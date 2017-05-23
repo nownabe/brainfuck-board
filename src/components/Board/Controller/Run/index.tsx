@@ -33,7 +33,7 @@ class Run extends React.Component<Props, {}> {
   public render() {
     return (
       <PrimaryButton onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
-        Run All
+        Run
       </PrimaryButton>
     );
   }
