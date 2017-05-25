@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
 
-import Button from "components/common/Button";
+import Button from "bulma/elements/Button";
 
 import { reset } from "actions/interpreter";
 

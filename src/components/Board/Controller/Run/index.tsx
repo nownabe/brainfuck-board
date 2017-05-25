@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
 
-import PrimaryButton from "components/common/PrimaryButton";
+import { Primary as Button } from "bulma/elements/Button/colors";
 
 import { run } from "actions/interpreter";
 import { finish, start } from "actions/isRunning";
@@ -32,9 +32,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 class Run extends React.Component<Props, {}> {
   public render() {
     return (
-      <PrimaryButton onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
+      <Button onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
         Run
-      </PrimaryButton>
+      </Button>
     );
   }
 
