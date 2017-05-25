@@ -1,3 +1,4 @@
+import * as React from "react";
 import styled from "styled-components";
 
 import {
@@ -31,7 +32,28 @@ const activeStyles = `
     color: ${buttonActive};
 `;
 
-export default styled.button`
+interface Props {
+    children?: React.ReactNode;
+    style?: string;
+    className?: string;
+    isFocused?: boolean;
+    isActive?: boolean;
+    isHovered?: boolean;
+    isFullwidth?: boolean;
+    disabled?: boolean;
+    onClick: () => void;
+}
+const Button: React.StatelessComponent<Props> = (props) => (
+    <button
+        className={props.className}
+        onClick={props.onClick}
+        disabled={props.disabled}
+    >
+        {props.children}
+    </button>
+);
+
+export default styled(Button)`
     ${({ isFocused, isActive }: { isFocused?: boolean, isActive?: boolean }) => (
         control({ isFocused, isActive })
     )}
@@ -66,7 +88,14 @@ export default styled.button`
         opacity: 0.5;
     }
 
-    // TODO: .is-fullwidth, .is-loading
+    ${({ isFullwidth }: { isFullwidth?: boolean }) => (
+        isFullwidth ? `
+            display: flex;
+            width: 100%;
+        ` : ""
+    )}
+
+    // TODO: .is-loading
 
     line-height: 1;
     padding-bottom: 0.4em;

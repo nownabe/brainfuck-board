@@ -6,8 +6,8 @@ import Computer from "./Computer";
 import Controller from "./Controller";
 import Editor from "./Editor";
 
-import Column from "bulma/grid/column";
-import Columns from "bulma/grid/columns";
+import Column from "bulma/grid/Column";
+import Columns from "bulma/grid/Columns";
 import Container from "bulma/layout/Container";
 import Section from "bulma/layout/Section";
 
@@ -16,9 +16,7 @@ export default () => (
     <Header />
     <Section>
       <Container>
-        <Columns>
-          <Column><Controller /></Column>
-        </Columns>
+        <Controller />
         <Columns>
           <Column><Editor /></Column>
           <Column><Computer /></Column>

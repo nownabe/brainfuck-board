@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 class Step extends React.Component<Props, {}> {
   public render() {
     return (
-      <Button onClick={this.onClick.bind(this)} disabled={this.props.isRunning}>
+      <Button onClick={this.onClick.bind(this)} disabled={this.props.isRunning} isFullwidth>
         Step
       </Button>
     );

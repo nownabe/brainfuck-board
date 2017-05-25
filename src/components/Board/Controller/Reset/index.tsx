@@ -11,7 +11,7 @@ const c = ({ isRunning, dispatch }: { isRunning: boolean, dispatch: Dispatch<Act
     dispatch(reset());
   };
   return(
-    <Button onClick={onClick} disabled={isRunning}>Reset</Button>
+    <Button onClick={onClick} disabled={isRunning} isFullwidth>Reset</Button>
   );
 };
 
