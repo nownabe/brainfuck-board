@@ -12,9 +12,15 @@ export type Input = string;
 
 export type IsRunning = boolean;
 
+export interface User {
+  id: string;
+  name: string;
+}
+
 export interface State {
   interpreter: Interpreter;
   source: Source;
   input: Input;
   isRunning: IsRunning;
+  user: User;
 }

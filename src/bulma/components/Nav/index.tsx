@@ -21,10 +21,12 @@ import Container from "./Container";
 import Item from "./Item";
 import Left from "./Left";
 import Link from "./Link";
+import Right from "./Right";
 
 export {
     Container,
     Item,
     Left,
     Link,
+    Right,
 };
