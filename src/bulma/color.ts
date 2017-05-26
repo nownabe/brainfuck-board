@@ -12,10 +12,14 @@ export const white = "#fff";
 
 export const turquoise = "#00d1b2";
 export const turquoiseInvert = findColorInvert(turquoise);
+export const blue = "#3273dc";
+export const blueInvert = findColorInvert(blue);
 
 // Primary colors
 export const primary = turquoise;
 export const primaryInvert = turquoiseInvert;
+export const info = blue;
+export const infoInvert = blueInvert;
 
 // General
 export const background = whiteTer;

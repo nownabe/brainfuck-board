@@ -4,6 +4,8 @@ import {
     buttonShadowInset,
     primary,
     primaryInvert,
+    info,
+    infoInvert,
 } from "bulma/color";
 import { color2rgba, darken } from "bulma/utils";
 
@@ -72,3 +74,4 @@ const colorize = (color: string, invert: string) => {
 };
 
 export const Primary = colorize(primary, primaryInvert);
+export const Info = colorize(info, infoInvert);

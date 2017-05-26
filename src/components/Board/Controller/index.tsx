@@ -8,6 +8,7 @@ import AutoStepSlow from "./AutoStepSlow";
 import Reset from "./Reset";
 import Run from "./Run";
 import Step from "./Step";
+import Save from "./Save";
 
 export default () => (
   <Columns>
@@ -16,5 +17,6 @@ export default () => (
     <Column><AutoStepSlow /></Column>
     <Column><Step /></Column>
     <Column><Reset /></Column>
+    <Column><Save /></Column>
   </Columns>
 );

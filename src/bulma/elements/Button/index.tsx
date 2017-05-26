@@ -41,7 +41,7 @@ interface Props {
     isHovered?: boolean;
     isFullwidth?: boolean;
     disabled?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 }
 const Button: React.StatelessComponent<Props> = (props) => (
     <button

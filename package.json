@@ -7,9 +7,11 @@
     "start": "webpack-dev-server --inline --progress --hot"
   },
   "dependencies": {
+    "@types/react-modal": "^1.6.6",
     "firebase": "^4.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-modal": "^1.7.7",
     "react-redux": "^5.0.4",
     "react-router": "next",
     "react-router-redux": "next",
