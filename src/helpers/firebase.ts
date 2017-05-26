@@ -1,5 +1,7 @@
 import * as firebase from "firebase";
 
+import { User } from "states";
+
 import { save, reset } from "helpers/user";
 
 export const init = () => {
@@ -13,15 +15,16 @@ export const init = () => {
     });
 };
 
-export const authTwitter = async (callback: (response: any) => void) => {
+type Provider = firebase.auth.TwitterAuthProvider | firebase.auth.GithubAuthProvider;
+const auth = async (provider: Provider, callback: (user: User) => void) => {
     const currentUser = firebase.auth().currentUser;
     if (currentUser) {
         await signOut();
     }
 
-    const twitter = new firebase.auth.TwitterAuthProvider();
     try {
-        const response = await firebase.auth().signInWithPopup(twitter);
+        const response = await firebase.auth().signInWithPopup(provider);
+        console.log(response);
         const user = {
             id: response.user.uid,
             name: response.additionalUserInfo.username,
@@ -31,6 +34,16 @@ export const authTwitter = async (callback: (response: any) => void) => {
     } catch (error) {
         console.error(error);
     }
+};
+
+export const authTwitter = async (callback: (user: User) => void) => {
+    const provider = new firebase.auth.TwitterAuthProvider();
+    auth(provider, callback);
+};
+
+export const authGitHub = async (callback: (user: User) => void) => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    auth(provider, callback);
 };
 
 export const signOut = async () => {

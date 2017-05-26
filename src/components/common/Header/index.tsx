@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import Nav, { Container, Item, Left, Link, Right } from "bulma/components/Nav";
+import GitHub from "./GitHub";
 import SignOut from "./SignOut";
 import Twitter from "./Twitter";
 
@@ -29,6 +30,7 @@ const c = (props: { user: User }) => (
           :
           <Right>
             <Item><Twitter /></Item>
+            <Item><GitHub /></Item>
           </Right>
         }
       </Container>
