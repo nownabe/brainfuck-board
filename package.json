@@ -7,7 +7,6 @@
     "start": "webpack-dev-server --inline --progress --hot"
   },
   "dependencies": {
-    "@types/react-router": "next",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -15,12 +14,13 @@
     "react-router-redux": "next",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.2",
-    "styled-components": "^1.4.6"
+    "styled-components": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^15.0.24",
     "@types/react-dom": "^15.5.0",
     "@types/react-redux": "^4.4.40",
+    "@types/react-router": "next",
     "@types/react-router-redux": "next",
     "@types/redux-actions": "^1.2.4",
     "redux-devtools": "^3.4.0",
