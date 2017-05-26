@@ -13,6 +13,6 @@ const initialState: State = `+++++++++
 
 export default handleActions<State, Payload>({
   [change.toString()]: {
-    next: (state: State, action: Action<Payload>) => (action.payload || initialState),
+    next: (state: State, action: Action<Payload>) => (action.payload != null ? action.payload : initialState),
   },
 }, initialState);
