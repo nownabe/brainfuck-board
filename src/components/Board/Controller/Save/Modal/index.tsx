@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import Button from "bulma/elements/Button";
 import { Primary } from "bulma/elements/Button/colors";
+import Column from "bulma/grid/Column";
 import Columns from "bulma/grid/Columns";
 import Container from "bulma/layout/Container";
-import Column from "bulma/grid/Column";
 import DarkTextarea from "components/common/DarkTextarea";
 
 const Textarea = styled(DarkTextarea)`

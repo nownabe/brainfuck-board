@@ -2,7 +2,7 @@ import * as firebase from "firebase";
 
 import { User } from "states";
 
-import { save, reset } from "helpers/user";
+import { reset, save } from "helpers/user";
 
 export const init = () => {
     firebase.initializeApp({
@@ -24,7 +24,6 @@ const auth = async (provider: Provider, callback: (user: User) => void) => {
 
     try {
         const response = await firebase.auth().signInWithPopup(provider);
-        console.log(response);
         const user = {
             id: response.user.uid,
             name: response.additionalUserInfo.username,

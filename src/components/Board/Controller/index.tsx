@@ -7,8 +7,8 @@ import AutoStepFast from "./AutoStepFast";
 import AutoStepSlow from "./AutoStepSlow";
 import Reset from "./Reset";
 import Run from "./Run";
-import Step from "./Step";
 import Save from "./Save";
+import Step from "./Step";
 
 export default () => (
   <Columns>

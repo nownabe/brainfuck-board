@@ -6,7 +6,7 @@ import { Info as Button } from "bulma/elements/Button/colors";
 
 import ModalContent from "./Modal";
 
-import { User, IsRunning, Source, State } from "states";
+import { IsRunning, Source, State, User } from "states";
 
 interface TStateProps {
     user: User;
@@ -18,9 +18,9 @@ interface TOwnProps {}
 type Props = TStateProps & TDispatchProps & TOwnProps;
 
 const mapStateToProps = (state: State) => ({
-    user: state.user,
     isRunning: state.isRunning,
     source: state.source,
+    user: state.user,
 });
 const mapDispatchToProps = () => ({});
 

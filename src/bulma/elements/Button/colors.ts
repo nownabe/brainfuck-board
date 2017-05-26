@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 import {
     buttonShadowInset,
-    primary,
-    primaryInvert,
     info,
     infoInvert,
+    primary,
+    primaryInvert,
 } from "bulma/color";
 import { color2rgba, darken } from "bulma/utils";
 
