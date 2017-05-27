@@ -50,8 +50,9 @@ export const signOut = async () => {
         const currentUser = firebase.auth().currentUser;
         if (!currentUser) { return; }
         await firebase.auth().signOut();
-        reset();
     } catch (error) {
         console.error(error);
+    } finally {
+        reset();
     }
 };
