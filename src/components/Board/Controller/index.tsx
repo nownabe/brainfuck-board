@@ -5,9 +5,9 @@ import Columns from "bulma/grid/Columns";
 
 import AutoStepFast from "./AutoStepFast";
 import AutoStepSlow from "./AutoStepSlow";
+import Publish from "./Publish";
 import Reset from "./Reset";
 import Run from "./Run";
-import Save from "./Save";
 import Step from "./Step";
 
 export default () => (
@@ -17,6 +17,6 @@ export default () => (
     <Column><AutoStepSlow /></Column>
     <Column><Step /></Column>
     <Column><Reset /></Column>
-    <Column><Save /></Column>
+    <Column><Publish /></Column>
   </Columns>
 );

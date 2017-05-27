@@ -29,7 +29,7 @@ const overlayStyle = {
     zIndex: 10,
 };
 
-class Save extends React.Component<Props, { isOpen: boolean, title: string }> {
+class Publish extends React.Component<Props, { isOpen: boolean, title: string }> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -46,10 +46,10 @@ class Save extends React.Component<Props, { isOpen: boolean, title: string }> {
                     disabled={!this.props.user || this.props.isRunning}
                     isFullwidth
                 >
-                    Save
+                    Publish
                 </Button>
                 <Modal
-                    contentLabel="Save"
+                    contentLabel="Publish"
                     isOpen={this.state.isOpen}
                     onRequestClose={this.onClose.bind(this)}
                     shouldCloseOnOverlayClick={true}
@@ -57,7 +57,7 @@ class Save extends React.Component<Props, { isOpen: boolean, title: string }> {
                 >
                     <ModalContent
                         source={this.props.source}
-                        onSave={this.onSave.bind(this)}
+                        onPublish={this.onPublish.bind(this)}
                         onCancel={this.onClose.bind(this)}
                         onTitleChange={this.onTitleChange.bind(this)}
                         title={this.state.title}
@@ -75,7 +75,7 @@ class Save extends React.Component<Props, { isOpen: boolean, title: string }> {
         this.setState({ isOpen: false });
     }
 
-    private onSave() {
+    private onPublish() {
         this.onClose();
     }
 
@@ -84,4 +84,4 @@ class Save extends React.Component<Props, { isOpen: boolean, title: string }> {
     }
 }
 
-export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(Save);
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(Publish);

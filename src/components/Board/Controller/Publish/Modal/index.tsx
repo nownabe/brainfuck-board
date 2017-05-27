@@ -13,7 +13,7 @@ const Textarea = styled(DarkTextarea)`
 `;
 
 interface Props {
-    onSave: () => void;
+    onPublish: () => void;
     onCancel: () => void;
     onTitleChange: () => void;
     source: string;
@@ -24,7 +24,11 @@ export default (props: Props) => (
     <Container>
         <Columns>
             <Column>
-                <h2>Save Brainf*ck Program</h2>
+                <h2 className="title">Publish</h2>
+                <p>
+                    Your program will be stored and published on Brainf*ck Board.
+                    It won't be posted to anywhere except here.
+                </p>
             </Column>
         </Columns>
         <Columns>
@@ -47,7 +51,7 @@ export default (props: Props) => (
                 <Button onClick={props.onCancel} isFullwidth>Cancel</Button>
             </Column>
             <Column>
-                <Primary onClick={props.onSave} isFullwidth>Save</Primary>
+                <Primary onClick={props.onPublish} isFullwidth>Publish</Primary>
             </Column>
         </Columns>
     </Container>
