@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-import { User } from "states";
+import { Source, User } from "states";
 
 import { reset, save } from "helpers/user";
 
@@ -55,4 +55,26 @@ export const signOut = async () => {
     } finally {
         reset();
     }
+};
+
+export const publish = async (title: string, source: Source, user: User) => {
+    const key = firebase.database().ref().child("programs").push().key;
+
+    if (!key) {
+        console.error("Failed to get key");
+        return;
+    }
+
+    const data = {
+        authorID: user.id,
+        authorName: user.name,
+        source,
+        title,
+        timestamp: new Date().getTime(),
+    };
+
+    const updates: { [key: string]: object | boolean } = {};
+    updates[`/usersPrograms/${user.id}/${key}`] = true;
+    updates[`/programs/${key}`] = data;
+    return firebase.database().ref().update(updates);
 };

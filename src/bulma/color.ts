@@ -23,6 +23,7 @@ export const infoInvert = blueInvert;
 
 // General
 export const background = whiteTer;
+export const border = greyLighter;
 
 // Text
 export const textLight = grey;

@@ -69,7 +69,15 @@ const colorize = (color: string, invert: string) => {
             ` : ""
         )}
 
-        // TODO: is-loading, is-outlined, ...
+        ${({ isLoading }: { isLoading?: boolean }) => (
+            isLoading ? `
+                &:after {
+                    border-color: transparent transparent ${invert} ${invert} !important;
+                }
+            ` : ""
+        )}
+
+        // TODO: is-outlined, ...
     `;
 };
 

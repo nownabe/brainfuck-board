@@ -15,7 +15,7 @@ import {
 } from "bulma/color";
 
 import { control } from "bulma/controls";
-import { unselectable } from "bulma/mixins";
+import { unselectable, loader, center } from "bulma/mixins";
 
 const hoverStyles = `
     border-color: ${buttonHoverBorder};
@@ -38,6 +38,7 @@ interface Props {
     className?: string;
     isFocused?: boolean;
     isActive?: boolean;
+    isLoading?: boolean;
     isHovered?: boolean;
     isFullwidth?: boolean;
     disabled?: boolean;
@@ -95,7 +96,17 @@ export default styled(Button)`
         ` : ""
     )}
 
-    // TODO: .is-loading
+    ${(props: Props) => (
+        props.isLoading ? `
+            color: transparent !important;
+            pointer-events: none;
+            &:after {
+                ${loader()}
+                ${center("1em")}
+                position: absolute !important;
+            }
+        ` : ""
+     )}
 
     line-height: 1;
     padding-bottom: 0.4em;

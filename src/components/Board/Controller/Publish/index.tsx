@@ -6,6 +6,7 @@ import { Info as Button } from "bulma/elements/Button/colors";
 
 import ModalContent from "./Modal";
 
+import { publish } from "helpers/firebase";
 import { IsRunning, Source, State, User } from "states";
 
 interface TStateProps {
@@ -16,6 +17,12 @@ interface TStateProps {
 interface TDispatchProps {}
 interface TOwnProps {}
 type Props = TStateProps & TDispatchProps & TOwnProps;
+
+interface OwnState {
+    isOpen: boolean;
+    isPublishing: boolean;
+    title: string;
+}
 
 const mapStateToProps = (state: State) => ({
     isRunning: state.isRunning,
@@ -29,11 +36,13 @@ const overlayStyle = {
     zIndex: 10,
 };
 
-class Publish extends React.Component<Props, { isOpen: boolean, title: string }> {
+
+class Publish extends React.Component<Props, OwnState> {
     constructor(props: Props) {
         super(props);
         this.state = {
             isOpen: false,
+            isPublishing: false,
             title: "",
         };
     }
@@ -43,8 +52,9 @@ class Publish extends React.Component<Props, { isOpen: boolean, title: string }>
             <div>
                 <Button
                     onClick={this.onClick.bind(this)}
-                    disabled={!this.props.user || this.props.isRunning}
+                    disabled={!this.props.user || this.props.isRunning || this.state.isPublishing}
                     isFullwidth
+                    isLoading={this.state.isPublishing}
                 >
                     Publish
                 </Button>
@@ -75,8 +85,11 @@ class Publish extends React.Component<Props, { isOpen: boolean, title: string }>
         this.setState({ isOpen: false });
     }
 
-    private onPublish() {
+    private async onPublish() {
+        this.setState({ isPublishing: true });
         this.onClose();
+        await publish(this.state.title, this.props.source, this.props.user);
+        this.setState({ isPublishing: false, title: "" });
     }
 
     private onTitleChange(e: React.FormEvent<HTMLInputElement>) {
