@@ -14,11 +14,4 @@ export const init = () => injectGlobal`
         font-weight: bold;
         color: #d00;
     }
-
-    // TODO: DELETE
-    .current-instruction {
-        font-weight: bold;
-        color: #fff;
-        background-color: #000;
-    }
 `;
