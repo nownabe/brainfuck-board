@@ -8,10 +8,4 @@ export const init = () => injectGlobal`
     pre {
         font-family: monaco, 'Inconsolata', monospace;
     }
-
-    // TODO: DELETE
-    .pointed {
-        font-weight: bold;
-        color: #d00;
-    }
 `;

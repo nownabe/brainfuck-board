@@ -1,7 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 import Container from "components/common/MiniContainer";
+
+const PointedAddress = styled.td`
+  font-weight: bold;
+  color: #d00;
+`;
 
 const c = ({ memory, pointer }: { memory: number[], pointer: number }) => (
   <Container>
@@ -18,9 +24,11 @@ const c = ({ memory, pointer }: { memory: number[], pointer: number }) => (
         {
           memory.map((v, i) => (
             <tr key={`addr${i}`}>
-              <td className={pointer === i ? "pointed" : ""}>
-                {i}{pointer === i ? "*" : ""}
-              </td>
+              {
+                pointer === i ?
+                <PointedAddress>{i}*</PointedAddress>
+                : <td>{i}</td>
+              }
               <td>{v}</td>
               <td>{String.fromCharCode(v)}</td>
             </tr>
