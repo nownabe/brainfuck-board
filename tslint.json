@@ -8,6 +8,9 @@
         "interface-name": [
             false
         ],
+        "no-console": [
+            true, "log"
+        ],
         "no-empty-interface": false
     },
     "rulesDirectory": []
