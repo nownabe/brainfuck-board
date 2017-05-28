@@ -13,7 +13,7 @@ import Section from "bulma/layout/Section";
 
 export default () => (
   <div>
-    <Header />
+    <Header tab="board" />
     <Section>
       <Container>
         <Controller />

@@ -1,9 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Action, Dispatch } from "redux";
 import styled from "styled-components";
 
-import Nav, { Container, Item, Left, Link, Right } from "bulma/components/Nav";
+import Nav, { Container, Item, Left, Right } from "bulma/components/Nav";
 import GitHub from "./GitHub";
+import Link from "./Link";
 import SignOut from "./SignOut";
 import Twitter from "./Twitter";
 
@@ -11,7 +13,9 @@ import { User } from "states";
 
 const Title = styled.h1`font-weight: bold;`;
 
-const c = (props: { user: User }) => (
+type Tab = "board" | "programs";
+
+const c = (props: { dispatch: Dispatch<Action>, user: User, tab: Tab }) => (
   <div>
     <Nav hasShadow>
       <Container>
@@ -19,7 +23,8 @@ const c = (props: { user: User }) => (
           <Item>
             <Title>Brainf*ck Board</Title>
           </Item>
-          <Link isTab isActive>Board</Link>
+          <Link to="/" isTab isActive={props.tab === "board"}>Board</Link>
+          <Link to="/programs" isTab isActive={props.tab === "programs"}>Programs</Link>
         </Left>
         {
           props.user ?
@@ -39,5 +44,5 @@ const c = (props: { user: User }) => (
 );
 
 export default connect(
-  ({ user }) => ({ user }),
+  ({ user }, ownProps: { tab: Tab }) => ({ user, tab: ownProps.tab }),
 )(c);
