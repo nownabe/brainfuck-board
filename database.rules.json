@@ -1,0 +1,35 @@
+{
+  "rules": {
+    "usersPrograms": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "programs": {
+      "$program_id": {
+        ".read": true,
+        ".write": "auth.uid !== null && ((!data.exists() && newData.exists()) || root.child('userPrograms/' + auth.uid + '/' + $program_id).exists())",
+        ".validate": "newData.hasChildren(['authorID', 'authorName', 'source', 'title', 'timestamp'])",
+        "authorID": {
+          ".validate": "newData.val() === auth.uid"
+        },
+        "authorName": {
+          ".validate": "newData.isString()"
+        },
+        "source": {
+          ".validate": "newData.isString()"
+        },
+        "title": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.val() <= now"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}
