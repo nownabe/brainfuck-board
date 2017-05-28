@@ -36,7 +36,6 @@ const overlayStyle = {
     zIndex: 10,
 };
 
-
 class Publish extends React.Component<Props, OwnState> {
     constructor(props: Props) {
         super(props);

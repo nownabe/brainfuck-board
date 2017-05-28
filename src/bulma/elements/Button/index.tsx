@@ -15,7 +15,7 @@ import {
 } from "bulma/color";
 
 import { control } from "bulma/controls";
-import { unselectable, loader, center } from "bulma/mixins";
+import { center, loader, unselectable } from "bulma/mixins";
 
 const hoverStyles = `
     border-color: ${buttonHoverBorder};
