@@ -6,6 +6,8 @@ import {
     infoInvert,
     primary,
     primaryInvert,
+    warning,
+    warningInvert,
 } from "bulma/color";
 import { color2rgba, darken } from "bulma/utils";
 
@@ -83,3 +85,4 @@ const colorize = (color: string, invert: string) => {
 
 export const Primary = colorize(primary, primaryInvert);
 export const Info = colorize(info, infoInvert);
+export const Warning = colorize(warning, warningInvert);

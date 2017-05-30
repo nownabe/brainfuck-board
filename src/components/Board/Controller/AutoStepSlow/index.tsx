@@ -5,7 +5,7 @@ import { Action, Dispatch } from "redux";
 import { Primary as Button } from "bulma/elements/Button/colors";
 
 import { step } from "actions/interpreter";
-import { finish, start } from "actions/isRunning";
+import { finish, start, stop } from "actions/isRunning";
 import interpreter from "interpreter";
 import { Input, Interpreter, IsRunning, Source, State } from "states";
 
@@ -31,6 +31,12 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 
 class AutoStepSlow extends React.Component<Props, {}> {
   private ip: interpreter;
+  private unmounted: boolean;
+
+  constructor(props: Props) {
+    super(props);
+    this.unmounted = false;
+  }
 
   public render() {
     return (
@@ -38,6 +44,11 @@ class AutoStepSlow extends React.Component<Props, {}> {
         Auto Step (Slow)
       </Button>
     );
+  }
+
+  public componentWillUnmount() {
+    this.unmounted = true;
+    this.props.dispatch(stop());
   }
 
   private onClick() {
@@ -48,6 +59,9 @@ class AutoStepSlow extends React.Component<Props, {}> {
 
   private async cycle() {
       setTimeout(() => {
+        if (!this.props.isRunning || this.unmounted) {
+          return;
+        }
         this.ip.tick();
         this.props.dispatch(step(this.ip.state()));
         if (this.ip.isFinished()) {
