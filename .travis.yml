@@ -9,5 +9,8 @@ cache:
 install:
   - yarn add -g typescript tslint firebase-tools
 
+before_script:
+  - touch .env
+
 after_success:
   - npm run deploy:ci
