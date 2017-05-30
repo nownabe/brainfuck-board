@@ -3,8 +3,7 @@ import * as React from "react";
 import Column from "bulma/grid/Column";
 import Columns from "bulma/grid/Columns";
 
-import AutoStepFast from "./AutoStepFast";
-import AutoStepSlow from "./AutoStepSlow";
+import AutoStep from "./AutoStep";
 import Publish from "./Publish";
 import Reset from "./Reset";
 import Run from "./Run";
@@ -14,8 +13,8 @@ import Stop from "./Stop";
 export default () => (
   <Columns>
     <Column><Run /></Column>
-    <Column><AutoStepFast /></Column>
-    <Column><AutoStepSlow /></Column>
+    <Column><AutoStep interval={5}>Auto Step (Fast)</AutoStep></Column>
+    <Column><AutoStep interval={20}>Auto Step (Slow)</AutoStep></Column>
     <Column><Step /></Column>
     <Column><Stop /></Column>
     <Column><Reset /></Column>

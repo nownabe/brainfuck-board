@@ -18,7 +18,10 @@ interface TStateProps {
 interface TDispatchProps {
   dispatch: Dispatch<Action>;
 }
-interface TOwnProps {}
+interface TOwnProps {
+  interval: number;
+  children?: React.ReactNode;
+}
 type Props = TStateProps & TDispatchProps & TOwnProps;
 
 const mapStateToProps = (state: State) => ({
@@ -29,7 +32,7 @@ const mapStateToProps = (state: State) => ({
 });
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({ dispatch });
 
-class AutoStepFast extends React.Component<Props, {}> {
+class C extends React.Component<Props, {}> {
   private ip: interpreter;
   private unmounted: boolean;
 
@@ -41,7 +44,7 @@ class AutoStepFast extends React.Component<Props, {}> {
   public render() {
     return (
       <Button onClick={this.onClick.bind(this)} disabled={this.props.isRunning} isFullwidth>
-        Auto Step (Fast)
+        {this.props.children}
       </Button>
     );
   }
@@ -69,8 +72,8 @@ class AutoStepFast extends React.Component<Props, {}> {
         } else {
             this.cycle();
         }
-      }, 5);
+      }, this.props.interval);
   }
 }
 
-export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(AutoStepFast);
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(C);
