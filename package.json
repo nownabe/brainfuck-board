@@ -2,10 +2,12 @@
   "name": "brainfuck-js",
   "private": true,
   "scripts": {
-    "build": "npm run lint && webpack -p",
-    "deploy": "npm run build && firebase deploy",
+    "build": "webpack -p",
+    "deploy": "npm run test && npm run build && firebase deploy",
+    "deploy:ci": "npm run build && firebase deploy --token $FIREBASE_TOKEN",
     "lint": "tslint -c tslint.json --fix src/**/*.{ts,tsx}",
-    "start": "webpack-dev-server --inline --progress --hot"
+    "start": "webpack-dev-server --inline --progress --hot",
+    "test": "npm run lint"
   },
   "dependencies": {
     "@types/react-modal": "^1.6.6",
