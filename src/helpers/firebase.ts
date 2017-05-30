@@ -1,10 +1,11 @@
 import * as firebase from "firebase";
+import { Action, Dispatch } from "redux";
 
-import { Source, User } from "states";
+import { add } from "actions/programs";
+import { get, reset, save } from "helpers/user";
+import { Program, Source, User } from "states";
 
-import { reset, save } from "helpers/user";
-
-export const init = () => {
+export const init = (dispatch: Dispatch<Action>) => {
     firebase.initializeApp({
         apiKey: "AIzaSyCciAREjQ1UWkXGfzZ7XQYAYbbDQI70K7s",
         authDomain: "brainfuck-board.firebaseapp.com",
@@ -12,6 +13,28 @@ export const init = () => {
         messagingSenderId: "319625377192",
         projectId: "brainfuck-board",
         storageBucket: "brainfuck-board.appspot.com",
+    });
+
+    listenMyPrograms(dispatch);
+};
+
+const listenMyPrograms = (dispatch: Dispatch<Action>) => {
+    const user = get();
+    if (!user) { return; }
+
+    const ref = firebase.database().ref("usersPrograms/" + user.id);
+    ref.on("child_added", (snapshot: firebase.database.DataSnapshot | null) => {
+        if (!snapshot) { return; }
+        const programID = snapshot.key;
+        firebase.database().ref(`programs/${programID}`).once("value").
+            then((programSnapshot: firebase.database.DataSnapshot | null) => {
+            if (!programSnapshot) { return; }
+            const program: Program = {
+                ...programSnapshot.val(),
+                id: programID,
+            };
+            dispatch(add(program));
+        });
     });
 };
 

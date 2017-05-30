@@ -6,6 +6,19 @@ export interface Interpreter {
     programCounter: number;
 }
 
+export interface Program {
+  id: string;
+  authorID: string;
+  authorName: string;
+  source: string;
+  title: string;
+  timestamp: number;
+}
+
+export interface Programs {
+  [key: string]: Program;
+}
+
 export type Source = string;
 
 export type Input = string;
@@ -19,6 +32,7 @@ export interface User {
 
 export interface State {
   interpreter: Interpreter;
+  programs: Programs;
   source: Source;
   input: Input;
   isRunning: IsRunning;
