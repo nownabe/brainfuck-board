@@ -93,8 +93,8 @@ export const publish = async (title: string, source: Source, user: User) => {
         authorID: user.id,
         authorName: user.name,
         source,
-        title,
         timestamp: new Date().getTime(),
+        title,
     };
 
     const updates: { [key: string]: object | boolean } = {};
