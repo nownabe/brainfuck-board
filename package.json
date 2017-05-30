@@ -22,6 +22,7 @@
     "styled-components": "^2.0.0"
   },
   "devDependencies": {
+    "@types/node": "^7.0.22",
     "@types/react": "^15.0.24",
     "@types/react-dom": "^15.5.0",
     "@types/react-redux": "^4.4.40",
@@ -29,6 +30,7 @@
     "@types/react-router-dom": "^4.0.4",
     "@types/react-router-redux": "next",
     "@types/redux-actions": "^1.2.4",
+    "dotenv-webpack": "^1.5.0",
     "firebase-tools": "^3.9.0",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.28.0",
