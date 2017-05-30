@@ -7,7 +7,7 @@ cache:
   yarn: true
 
 install:
-  - yarn add -g typescript tslint firebase-tools
+  - cd functions && npm install
 
-after_success:
+script:
   - npm run deploy:ci
