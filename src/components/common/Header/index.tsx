@@ -20,7 +20,7 @@ const c = (props: { dispatch: Dispatch<Action>, user: User, tab: Tab }) => (
       <Container>
         <Left>
           <Item>
-            <Title>Brainf*ck Board</Title>
+            <Title>Brainfuck Board</Title>
           </Item>
           <Link to="/" isTab isActive={props.tab === "board"}>Board</Link>
           <Link to="/programs" isTab isActive={props.tab === "programs"}>Programs</Link>
