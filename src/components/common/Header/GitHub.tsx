@@ -14,7 +14,7 @@ const c = ({ dispatch }: { dispatch: Dispatch<Action>}) => {
     const callback = (user: User) => {
         dispatch(createSignIn(user));
     };
-    const onClick = () => { authGitHub(callback); };
+    const onClick = () => { authGitHub(dispatch, callback); };
     return (
         <Button onClick={onClick}>
             <Icon>github</Icon>

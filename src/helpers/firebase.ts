@@ -19,7 +19,7 @@ export const init = (dispatch: Dispatch<Action>) => {
 };
 
 const listenMyPrograms = (dispatch: Dispatch<Action>) => {
-    const user = get();
+    const user = getUser();
     if (!user) { return; }
 
     const ref = firebase.database().ref("usersPrograms/" + user.id);
@@ -39,7 +39,7 @@ const listenMyPrograms = (dispatch: Dispatch<Action>) => {
 };
 
 type Provider = firebase.auth.TwitterAuthProvider | firebase.auth.GithubAuthProvider;
-const auth = async (provider: Provider, callback: (user: User) => void) => {
+const auth = async (provider: Provider, dispatch: Dispatch<Action>, callback: (user: User) => void) => {
     const currentUser = firebase.auth().currentUser;
     if (currentUser) {
         await signOut();
@@ -52,20 +52,21 @@ const auth = async (provider: Provider, callback: (user: User) => void) => {
             name: response.additionalUserInfo.username,
         };
         save(user);
+        listenMyPrograms(dispatch);
         callback(user);
     } catch (error) {
         console.error(error);
     }
 };
 
-export const authTwitter = async (callback: (user: User) => void) => {
+export const authTwitter = async (dispatch: Dispatch<Action>, callback: (user: User) => void) => {
     const provider = new firebase.auth.TwitterAuthProvider();
-    auth(provider, callback);
+    auth(provider, dispatch, callback);
 };
 
-export const authGitHub = async (callback: (user: User) => void) => {
+export const authGitHub = async (dispatch: Dispatch<Action>, callback: (user: User) => void) => {
     const provider = new firebase.auth.GithubAuthProvider();
-    auth(provider, callback);
+    auth(provider, dispatch, callback);
 };
 
 export const signOut = async () => {
@@ -100,4 +101,26 @@ export const publish = async (title: string, source: Source, user: User) => {
     updates[`/usersPrograms/${user.id}/${key}`] = true;
     updates[`/programs/${key}`] = data;
     return firebase.database().ref().update(updates);
+};
+
+export const getUser = () => {
+    const currentUser = firebase.auth().currentUser;
+    if (!currentUser) {
+        reset();
+        return;
+    }
+
+    const storedUser = get();
+    if (!storedUser) {
+        signOut();
+        return;
+    }
+
+    if (currentUser.uid !== storedUser.id) {
+        reset();
+        signOut();
+        return;
+    }
+
+    return storedUser;
 };

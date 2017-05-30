@@ -1,6 +1,7 @@
 import { Action, handleActions } from "redux-actions";
 
 import { add } from "actions/programs";
+import { signOut } from "actions/user";
 import { Program } from "states";
 
 interface State {
@@ -20,5 +21,8 @@ export default handleActions<State, Payload>({
             }
             return next;
         },
+    },
+    [signOut.toString()]: {
+        next: () => (initialState),
     },
 }, initialState);

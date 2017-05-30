@@ -7,7 +7,6 @@ import Nav, { Container, Item, Left, Right } from "bulma/components/Nav";
 import GitHub from "./GitHub";
 import Link from "./Link";
 import SignOut from "./SignOut";
-import Twitter from "./Twitter";
 
 import { User } from "states";
 
@@ -34,7 +33,6 @@ const c = (props: { dispatch: Dispatch<Action>, user: User, tab: Tab }) => (
           </Right>
           :
           <Right>
-            <Item><Twitter /></Item>
             <Item><GitHub /></Item>
           </Right>
         }
