@@ -117,7 +117,6 @@ export const getUser = () => {
     }
 
     if (currentUser.uid !== storedUser.id) {
-        reset();
         signOut();
         return;
     }
