@@ -7,7 +7,9 @@ cache:
   yarn: true
 
 install:
+  - yarn
   - cd functions && npm install && cd ..
 
 script:
+  - npm test
   - npm run deploy:ci
