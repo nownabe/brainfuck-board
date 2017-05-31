@@ -7,7 +7,9 @@ cache:
   yarn: true
 
 install:
-  - cd functions && npm install
+  - yarn
+  - cd functions && npm install && cd ..
 
 script:
-  - npm run deploy:ci
+  - npm test
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then npm run deploy:ci; fi'
