@@ -14,7 +14,6 @@ export default () => (
     <Footer>
         <Container>
             <FooterBox>
-                <p>Brainfuck Board by @nownabe</p>
                 <p>
                     <a href="https://github.com/nownabe/brainfuck-board">
                         <Icon>github</Icon>
