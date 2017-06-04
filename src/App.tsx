@@ -4,9 +4,8 @@ import { Provider } from "react-redux";
 import { routerMiddleware, routerReducer } from "react-router-redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 
-import { init as initFB } from "helpers/firebase";
+import { init } from "helpers/firebase";
 import reducers from "reducers";
-import { init as initStyle } from "style";
 
 import Router from "Router";
 
@@ -21,8 +20,7 @@ const store = createStore(
   applyMiddleware(middleware),
 );
 
-initFB(store.dispatch);
-initStyle();
+init(store.dispatch);
 
 export default() => (
   <Provider store={store}>

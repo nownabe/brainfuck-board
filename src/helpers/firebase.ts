@@ -2,27 +2,27 @@ import * as firebase from "firebase";
 import { Action, Dispatch } from "redux";
 
 import { add } from "actions/programs";
-import { get, reset, save } from "helpers/user";
+import { signIn, signOut as createSignOut } from "actions/user";
 import { Program, Source, User } from "states";
 
-export const init = (dispatch: Dispatch<Action>) => {
-    firebase.initializeApp({
-        apiKey: process.env.FIREBASE_API_KEY,
-        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-        databaseURL: process.env.FIREBASE_DATABASE_URL,
-        messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    });
+firebase.initializeApp({
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+});
 
-    listenMyPrograms(dispatch);
+export const init = (dispatch: Dispatch<Action>) => {
+    listenAuthStateChanged(dispatch);
 };
 
 const listenMyPrograms = (dispatch: Dispatch<Action>) => {
-    const user = getUser();
+    const user = firebase.auth().currentUser;
     if (!user) { return; }
 
-    const ref = firebase.database().ref("usersPrograms/" + user.id);
+    const ref = firebase.database().ref("usersPrograms/" + user.uid);
     ref.on("child_added", (snapshot: firebase.database.DataSnapshot | null) => {
         if (!snapshot) { return; }
         const programID = snapshot.key;
@@ -35,6 +35,21 @@ const listenMyPrograms = (dispatch: Dispatch<Action>) => {
             };
             dispatch(add(program));
         });
+    });
+};
+
+const listenAuthStateChanged = (dispatch: Dispatch<Action>) => {
+    firebase.auth().onAuthStateChanged((fbUser: firebase.User | null) => {
+        if (fbUser) {
+            const user = {
+                id: fbUser.uid,
+                name: fbUser.displayName || "No Name",
+            };
+            dispatch(signIn(user));
+            listenMyPrograms(dispatch);
+        } else {
+            dispatch(createSignOut());
+        }
     });
 };
 
@@ -51,8 +66,6 @@ const auth = async (provider: Provider, dispatch: Dispatch<Action>, callback: (u
             id: response.user.uid,
             name: response.additionalUserInfo.username,
         };
-        save(user);
-        listenMyPrograms(dispatch);
         callback(user);
     } catch (error) {
         console.error(error);
@@ -76,8 +89,6 @@ export const signOut = async () => {
         await firebase.auth().signOut();
     } catch (error) {
         console.error(error);
-    } finally {
-        reset();
     }
 };
 
@@ -101,25 +112,4 @@ export const publish = async (title: string, source: Source, user: User) => {
     updates[`/usersPrograms/${user.id}/${key}`] = true;
     updates[`/programs/${key}`] = data;
     return firebase.database().ref().update(updates);
-};
-
-export const getUser = () => {
-    const currentUser = firebase.auth().currentUser;
-    if (!currentUser) {
-        reset();
-        return;
-    }
-
-    const storedUser = get();
-    if (!storedUser) {
-        signOut();
-        return;
-    }
-
-    if (currentUser.uid !== storedUser.id) {
-        signOut();
-        return;
-    }
-
-    return storedUser;
 };

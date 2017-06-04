@@ -1,6 +1,5 @@
 import { Action, handleActions } from "redux-actions";
 
-import { get } from "helpers/user";
 import { User } from "states";
 
 import { signIn, signOut } from "actions/user";
@@ -9,7 +8,7 @@ type State = User | null;
 
 type Payload = User;
 
-const initialState: State = get();
+const initialState: State = null;
 
 export default handleActions<State, Payload | {}>({
     [signIn.toString()]: {
