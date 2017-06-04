@@ -10,6 +10,7 @@ import Column from "bulma/grid/Column";
 import Columns from "bulma/grid/Columns";
 import Container from "bulma/layout/Container";
 import Section from "bulma/layout/Section";
+import Footer from "components/common/Footer";
 
 export default () => (
   <div>
@@ -23,5 +24,6 @@ export default () => (
         </Columns>
       </Container>
     </Section>
+    <Footer />
   </div>
 );

@@ -1,5 +1,11 @@
 import { border } from "bulma/color";
 
+export const block = () => (`
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+`);
+
 export const center = (width: string, height: string = "0") => (`
     position: absolute;
     ${height === "0" ? `

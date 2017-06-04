@@ -30,7 +30,10 @@ export const background = whiteTer;
 export const border = greyLighter;
 
 // Text
+export const text = greyDark;
+export const textInvert = findColorInvert(text);
 export const textLight = grey;
+export const textStrong = greyDarker;
 
 // Link
 export const link = primary;

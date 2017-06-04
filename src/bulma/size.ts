@@ -1,4 +1,7 @@
+// Typography
 export const size6 = "1rem";
+
+export const weightNormal = 400;
 
 export const tablet = 769;
 export const desktop = 1000;
