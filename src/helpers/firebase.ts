@@ -41,9 +41,10 @@ const listenMyPrograms = (dispatch: Dispatch<Action>) => {
 const listenAuthStateChanged = (dispatch: Dispatch<Action>) => {
     firebase.auth().onAuthStateChanged((fbUser: firebase.User | null) => {
         if (fbUser) {
+            const name = localStorage.getItem(fbUser.uid) || "no name";
             const user = {
                 id: fbUser.uid,
-                name: fbUser.displayName || "No Name",
+                name,
             };
             dispatch(signIn(user));
             listenMyPrograms(dispatch);
@@ -66,6 +67,7 @@ const auth = async (provider: Provider, dispatch: Dispatch<Action>, callback: (u
             id: response.user.uid,
             name: response.additionalUserInfo.username,
         };
+        localStorage.setItem(user.id, user.name);
         callback(user);
     } catch (error) {
         console.error(error);
