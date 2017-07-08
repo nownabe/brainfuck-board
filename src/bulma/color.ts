@@ -16,6 +16,8 @@ export const turquoise = "#00d1b2";
 export const turquoiseInvert = findColorInvert(turquoise);
 export const blue = "#3273dc";
 export const blueInvert = findColorInvert(blue);
+export const red = "#ff385f";
+export const redInvert = findColorInvert(red);
 
 // Primary colors
 export const primary = turquoise;
@@ -24,6 +26,8 @@ export const info = blue;
 export const infoInvert = blueInvert;
 export const warning = yellow;
 export const warningInvert = yellowInvert;
+export const danger = red;
+export const dangerInvert = redInvert;
 
 // General
 export const background = whiteTer;

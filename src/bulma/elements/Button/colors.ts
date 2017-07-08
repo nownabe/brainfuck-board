@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import {
     buttonShadowInset,
+    danger,
+    dangerInvert,
     info,
     infoInvert,
     primary,
@@ -86,3 +88,4 @@ const colorize = (color: string, invert: string) => {
 export const Primary = colorize(primary, primaryInvert);
 export const Info = colorize(info, infoInvert);
 export const Warning = colorize(warning, warningInvert);
+export const Danger = colorize(danger, dangerInvert);

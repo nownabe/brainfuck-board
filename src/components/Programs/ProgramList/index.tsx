@@ -31,7 +31,7 @@ class C extends React.Component<Props, {}> {
             <div>
                     {
                         Object.keys(this.props.programs).map((key, i) => (
-                            <Item key={key} title={this.props.programs[key].title}/>
+                            <Item key={key} program={this.props.programs[key]}/>
                         ))
                     }
             </div>
