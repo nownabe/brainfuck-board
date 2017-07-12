@@ -85,9 +85,13 @@ class Publish extends React.Component<Props, OwnState> {
     }
 
     private async onPublish() {
-        this.setState({ isPublishing: true });
-        this.onClose();
-        await publish(this.state.title, this.props.source, this.props.user);
+        try {
+            this.setState({ isPublishing: true });
+            this.onClose();
+            await publish(this.state.title, this.props.source, this.props.user);
+        } catch (e) {
+            console.error(e);
+        }
         this.setState({ isPublishing: false, title: "" });
     }
 

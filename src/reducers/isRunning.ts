@@ -1,7 +1,8 @@
 import { Action, handleActions } from "redux-actions";
-import { IsRunning as State } from "states";
 
+import { reset } from "actions/board";
 import { finish, start, stop } from "actions/isRunning";
+import { IsRunning as State } from "states";
 
 const initialState: State = false;
 
@@ -14,5 +15,8 @@ export default handleActions<State, void>({
     },
     [finish.toString()]: {
         next: (state: State, action: Action<void>) => (false),
+    },
+    [reset.toString()]: {
+        next: () => initialState,
     },
 }, initialState);

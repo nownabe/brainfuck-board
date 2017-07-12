@@ -4,4 +4,4 @@ import { Program } from "states";
 
 const pass = <T>(payload: T) => (payload);
 
-export const add = createAction<Program, Program>("MY_PROGRAMS/ADD", pass);
+export const add = createAction<Program, Program>("PROGRAMS/ADD", pass);

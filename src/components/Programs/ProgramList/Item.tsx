@@ -1,16 +1,17 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
+import { Action, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { Program } from "states";
+import { reset } from "actions/board";
+import { load } from "actions/source";
+import { Program, State } from "states";
 
 import { inputBorder } from "bulma/color";
 import { Danger, Primary } from "bulma/elements/Button/colors";
 import Column from "bulma/grid/Column";
 import Columns from "bulma/grid/Columns";
-
-interface Props {
-    program: Program;
-}
 
 const Container = styled(Column)`
     display: flex;
@@ -29,14 +30,38 @@ const DeleteButton = styled(Danger)`
     margin: 0;
 `;
 
-export default ({ program }: Props) => (
-    <Columns>
-        <Container>
-                <Buttons>
-                    <LoadButton>Load</LoadButton>
-                    <DeleteButton>Delete</DeleteButton>
-                </Buttons>
-                <p>{ program.title }</p>
-        </Container>
-    </Columns>
-);
+interface TStateProps {}
+interface TDispatchProps {
+    load: () => null;
+}
+interface TOwnProps {
+    program: Program;
+}
+type Props = TStateProps & TDispatchProps & TOwnProps;
+
+const mapStateToProps = (state: State) => ({});
+const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: TOwnProps) => ({
+    load: () => {
+        dispatch(reset());
+        dispatch(load(ownProps.program.source));
+        dispatch(push("/"));
+    },
+});
+
+class Item extends React.Component<Props, {}> {
+    public render() {
+        return(
+            <Columns>
+                <Container>
+                    <Buttons>
+                        <LoadButton onClick={this.props.load}>Load</LoadButton>
+                        <DeleteButton>Delete</DeleteButton>
+                    </Buttons>
+                    <p>{ this.props.program.title }</p>
+                </Container>
+            </Columns>
+        );
+    }
+}
+
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)(Item);
