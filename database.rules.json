@@ -24,7 +24,7 @@
           ".validate": "newData.isString()"
         },
         "timestamp": {
-          ".validate": "newData.val() <= now"
+          ".validate": "newData.isNumber()"
         },
         "$other": {
           ".validate": false
