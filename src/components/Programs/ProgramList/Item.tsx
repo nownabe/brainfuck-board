@@ -6,7 +6,8 @@ import styled from "styled-components";
 
 import { reset } from "actions/board";
 import { load } from "actions/source";
-import { Program, State } from "states";
+import { remove } from "helpers/firebase";
+import { Program, State, User } from "states";
 
 import { inputBorder } from "bulma/color";
 import { Danger, Primary } from "bulma/elements/Button/colors";
@@ -30,7 +31,9 @@ const DeleteButton = styled(Danger)`
     margin: 0;
 `;
 
-interface TStateProps {}
+interface TStateProps {
+    user: User;
+}
 interface TDispatchProps {
     load: () => null;
 }
@@ -39,7 +42,9 @@ interface TOwnProps {
 }
 type Props = TStateProps & TDispatchProps & TOwnProps;
 
-const mapStateToProps = (state: State) => ({});
+const mapStateToProps = (state: State) => ({
+    user: state.user,
+});
 const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: TOwnProps) => ({
     load: () => {
         dispatch(reset());
@@ -55,12 +60,16 @@ class Item extends React.Component<Props, {}> {
                 <Container>
                     <Buttons>
                         <LoadButton onClick={this.props.load}>Load</LoadButton>
-                        <DeleteButton>Delete</DeleteButton>
+                        <DeleteButton onClick={this.delete.bind(this)}>Delete</DeleteButton>
                     </Buttons>
                     <p>{ this.props.program.title }</p>
                 </Container>
             </Columns>
         );
+    }
+
+    private delete() {
+        remove(this.props.program, this.props.user);
     }
 }
 

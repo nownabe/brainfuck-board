@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
 import { Action, Dispatch } from "redux";
 
-import { add } from "actions/programs";
+import { add, remove as removeProgram } from "actions/programs";
 import { signIn, signOut as createSignOut } from "actions/user";
 import { Program, Source, User } from "states";
 
@@ -35,6 +35,15 @@ const listenMyPrograms = (dispatch: Dispatch<Action>) => {
             };
             dispatch(add(program));
         });
+    });
+    ref.on("child_removed", (snapshot: firebase.database.DataSnapshot | null) => {
+        if (!snapshot) { return; }
+        if (!snapshot.key) { return; }
+        const program: Program = {
+            ...snapshot.val(),
+            id: snapshot.key,
+        };
+        dispatch(removeProgram(program));
     });
 };
 
@@ -113,5 +122,13 @@ export const publish = async (title: string, source: Source, user: User) => {
     const updates: { [key: string]: object | boolean } = {};
     updates[`/usersPrograms/${user.id}/${key}`] = true;
     updates[`/programs/${key}`] = data;
+    return firebase.database().ref().update(updates);
+};
+
+export const remove = async (program: Program, user: User) => {
+    const updates: { [key: string]: null } = {};
+    updates[`/usersPrograms/${user.id}/${program.id}`] = null;
+    updates[`/programs/${program.id}`] = null;
+    console.log(updates)
     return firebase.database().ref().update(updates);
 };

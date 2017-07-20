@@ -9,7 +9,7 @@
     "programs": {
       "$program_id": {
         ".read": true,
-        ".write": "auth.uid !== null && ((!data.exists() && newData.exists()) || root.child('userPrograms/' + auth.uid + '/' + $program_id).exists())",
+        ".write": "(auth.uid !== null && !data.exists()) || (auth.uid === data.child('authorID').val())",
         ".validate": "newData.hasChildren(['authorID', 'authorName', 'source', 'title', 'timestamp'])",
         "authorID": {
           ".validate": "newData.val() === auth.uid"
