@@ -118,8 +118,8 @@
     redux "^3.6.0"
 
 "@types/react-router@*", "@types/react-router@next":
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.9.tgz#ff43a8e842358891d4d0c7acf0d11023b7951de9"
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-5.1.2.tgz#41e5e6aa333a7b9a2bfdac753c04e1ca4b3e0d21"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
