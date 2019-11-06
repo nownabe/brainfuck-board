@@ -29,7 +29,7 @@
     "@types/react-modal": "^1.6.6",
     "@types/react-redux": "^4.4.40",
     "@types/react-router": "next",
-    "@types/react-router-dom": "^4.0.4",
+    "@types/react-router-dom": "^5.1.2",
     "@types/react-router-redux": "next",
     "@types/redux-actions": "^1.2.4",
     "dotenv-webpack": "^1.5.0",
