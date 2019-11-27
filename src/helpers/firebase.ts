@@ -130,6 +130,5 @@ export const remove = async (program: Program, user: User) => {
     const updates: { [key: string]: null } = {};
     updates[`/usersPrograms/${user.id}/${program.id}`] = null;
     updates[`/programs/${program.id}`] = null;
-    console.log(updates)
     return firebase.database().ref().update(updates);
 };
