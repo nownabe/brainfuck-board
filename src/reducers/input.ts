@@ -1,7 +1,7 @@
 import { Action, handleActions} from "redux-actions";
 
-import { change } from "actions/input";
 import { reset } from "actions/board";
+import { change } from "actions/input";
 import { Input as State } from "states";
 
 type Payload = State;
