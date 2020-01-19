@@ -11,7 +11,7 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders: [
+    rules: [
       { test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader" },
       { test: /\.html$/, exclude: /node_modules/, loader: "html-loader" }
     ]
