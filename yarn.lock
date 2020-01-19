@@ -109,17 +109,19 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router-redux@next":
+"@types/react-router-redux@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.1.tgz#9e44fd3961b5aa1799acc7ddfec3d0ee45f746d2"
+  integrity sha1-nkT9OWG1qheZrMfd/sPQ7kX3RtI=
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react-router@*", "@types/react-router@next":
+"@types/react-router@*", "@types/react-router@4.0.9":
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.9.tgz#ff43a8e842358891d4d0c7acf0d11023b7951de9"
+  integrity sha1-/0Oo6EI1iJHU0Mes8NEQI7eVHek=
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
@@ -3590,17 +3592,19 @@ react-router-dom@^4.1.1:
     prop-types "^15.5.4"
     react-router "^4.1.1"
 
-react-router-redux@next:
+react-router-redux@5.0.0-alpha.6:
   version "5.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.6.tgz#7418663c2ecd3c51be856fcf28f3d1deecc1a576"
+  integrity sha1-dBhmPC7NPFG+hW/PKPPR3uzBpXY=
   dependencies:
     history "^4.5.1"
     prop-types "^15.5.4"
     react-router "^4.1.1"
 
-react-router@^4.1.1:
+react-router@4.1.1, react-router@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.1.1.tgz#d448f3b7c1b429a6fbb03395099949c606b1fe95"
+  integrity sha1-1Ejzt8G0Kab7sDOVCZlJxgax/pU=
   dependencies:
     history "^4.6.0"
     hoist-non-react-statics "^1.2.0"
@@ -3608,16 +3612,6 @@ react-router@^4.1.1:
     loose-envify "^1.3.1"
     path-to-regexp "^1.5.3"
     prop-types "^15.5.4"
-    warning "^3.0.0"
-
-react-router@next:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0.tgz#6532075231f0bb5077c2005c1d417ad6165b3997"
-  dependencies:
-    history "^4.6.0"
-    invariant "^2.2.2"
-    loose-envify "^1.3.1"
-    path-to-regexp "^1.5.3"
     warning "^3.0.0"
 
 react@^15.5.4:
