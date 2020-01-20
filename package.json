@@ -36,7 +36,7 @@
     "firebase-tools": "^3.9.0",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^3.2.0",
-    "redux-devtools": "^3.4.0",
+    "redux-devtools": "^3.5.0",
     "ts-loader": "^6.2.1",
     "tslint": "^5.2.0",
     "typescript": "^2.3.2",
