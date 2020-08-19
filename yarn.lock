@@ -154,9 +154,10 @@
   version "15.0.24"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.24.tgz#8a75299dc37906df327c18ca918bf97a55e7123b"
 
-"@types/redux-actions@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-1.2.4.tgz#92d4cbcef6495a7d7129264210586c6f865667aa"
+"@types/redux-actions@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-2.6.1.tgz#0940e97fa35ad3004316bddb391d8e01d2efa605"
+  integrity sha512-zKgK+ATp3sswXs6sOYo1tk8xdXTy4CTaeeYrVQlClCjeOpag5vzPo0ASWiiBJ7vsiQRAdb3VkuFLnDoBimF67g==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
