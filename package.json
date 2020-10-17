@@ -10,7 +10,7 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "firebase": "^4.0.0",
+    "firebase": "^7.24.0",
     "react": "^15.6.2",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
