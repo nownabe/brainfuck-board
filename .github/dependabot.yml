@@ -1,0 +1,42 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+    timezone: Asia/Tokyo
+  open-pull-requests-limit: 10
+  reviewers:
+  - nownabe
+  assignees:
+  - nownabe
+  ignore:
+  - dependency-name: firebase
+    versions:
+    - 8.2.10
+    - 8.2.4
+    - 8.2.5
+    - 8.2.6
+    - 8.2.7
+    - 8.2.8
+    - 8.2.9
+    - 8.3.0
+    - 8.3.1
+    - 8.3.2
+    - 8.3.3
+    - 8.4.1
+  - dependency-name: typescript
+    versions:
+    - 4.1.3
+    - 4.1.4
+    - 4.1.5
+    - 4.2.2
+    - 4.2.3
+  - dependency-name: "@types/react-router"
+    versions:
+    - 5.1.11
+    - 5.1.12
+  - dependency-name: react-modal
+    versions:
+    - 3.12.1
