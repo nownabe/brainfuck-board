@@ -29,7 +29,7 @@
     "@types/react-modal": "^1.6.6",
     "@types/react-redux": "^4.4.40",
     "@types/react-router": "4.0.9",
-    "@types/react-router-dom": "^4.0.4",
+    "@types/react-router-dom": "^5.1.8",
     "@types/react-router-redux": "5.0.1",
     "@types/redux-actions": "^1.2.4",
     "dotenv-webpack": "^1.7.0",
