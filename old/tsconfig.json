@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "baseUrl": "./src",
+    "jsx": "react",
+    "lib": ["dom", "es2017"],
+    "module": "es2015",
+    "moduleResolution": "Node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "outDir": "./",
+    "rootDir": "src",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "ES5"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

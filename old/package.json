@@ -1,0 +1,47 @@
+{
+  "name": "brainfuck-js",
+  "private": true,
+  "scripts": {
+    "build": "webpack -p",
+    "deploy": "npm run test && npm run build && firebase deploy",
+    "deploy:ci": "npm run build && firebase deploy --token $FIREBASE_TOKEN",
+    "lint": "tslint -c tslint.json --fix src/**/*.{ts,tsx}",
+    "start": "webpack-dev-server --inline --progress --hot",
+    "test": "npm run lint"
+  },
+  "dependencies": {
+    "firebase": "^4.0.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.5.4",
+    "react-modal": "^1.7.7",
+    "react-redux": "^5.0.4",
+    "react-router": "4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "5.0.0-alpha.6",
+    "redux": "^3.6.0",
+    "redux-actions": "^2.0.2",
+    "styled-components": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.22",
+    "@types/react": "^15.0.24",
+    "@types/react-dom": "^15.5.0",
+    "@types/react-modal": "^1.6.6",
+    "@types/react-redux": "^4.4.40",
+    "@types/react-router": "4.0.9",
+    "@types/react-router-dom": "^4.0.4",
+    "@types/react-router-redux": "5.0.1",
+    "@types/redux-actions": "^1.2.4",
+    "dotenv-webpack": "^1.7.0",
+    "firebase-tools": "^3.9.0",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-devtools": "^3.5.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
