@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import Account from "./Account";
 import MenuItem from "./MenuItem";
 
 type Tab = "board" | "saved";
@@ -32,22 +34,7 @@ const Header = ({ tab }: Props) => {
             </MenuItem>
           </div>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <button className="button">
-                  <span className="icon">
-                    <i className="fab fa-github"></i>
-                  </span>
-                  <span>Sign In with GitHub</span>
-                </button>
-                <button className="button">
-                  <span className="icon">
-                    <i className="fab fa-twitter"></i>
-                  </span>
-                  <span>Sign In with Twitter</span>
-                </button>
-              </div>
-            </div>
+            <Account />
           </div>
         </div>
       </div>
