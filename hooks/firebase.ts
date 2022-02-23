@@ -15,7 +15,6 @@ import {
   getDatabase,
   onChildAdded,
   onChildRemoved,
-  onValue,
   push,
   ref,
   update,

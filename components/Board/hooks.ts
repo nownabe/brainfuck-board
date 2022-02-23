@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useAuth, useSavedPrograms } from "./../../hooks/firebase";
 
 import { useVm } from "./../../hooks/vm";
 
@@ -85,5 +86,45 @@ export const useBoard = () => {
     onClickStep,
     onClickStop,
     onClickReset,
+  };
+};
+
+export const useSaveButton = () => {
+  const { user } = useAuth();
+  const { saveProgram } = useSavedPrograms();
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [title, setTitle] = useState("");
+
+  const onCloseModal = useCallback(() => setIsModalOpen(false), []);
+  const onClick = useCallback(() => setIsModalOpen(true), []);
+  const onChangeTitle = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => setTitle(e.currentTarget.value),
+    []
+  );
+  const onClickCancel = useCallback(() => setIsModalOpen(false), []);
+  const onClickSave = useCallback(async () => {
+    setIsPublishing(true);
+    setIsModalOpen(false);
+    setTitle("");
+    try {
+      await saveProgram(title);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsPublishing(false);
+    }
+  }, [title, saveProgram]);
+
+  return {
+    disabled: !user || isPublishing,
+    isPublishing,
+    isModalOpen,
+    title,
+    onClick,
+    onCloseModal,
+    onChangeTitle,
+    onClickCancel,
+    onClickSave,
   };
 };

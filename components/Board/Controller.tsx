@@ -1,3 +1,4 @@
+import SaveButton from "./SaveButton";
 import { useBoard } from "./hooks";
 
 type Props = {};
@@ -70,7 +71,7 @@ const Controller = ({}: Props) => {
         </button>
       </div>
       <div className="column">
-        <button className="button is-fullwidth is-link">Save</button>
+        <SaveButton />
       </div>
     </div>
   );
