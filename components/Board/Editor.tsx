@@ -1,5 +1,9 @@
 import { useBoard } from "./hooks";
 
+const textareaStyle = {
+  fontFamily: "'Inconsolata', monospace",
+};
+
 const Editor = () => {
   const { vm, isRunning, onChangeProgram, onChangeInput } = useBoard();
 
@@ -11,7 +15,7 @@ const Editor = () => {
           className="textarea"
           disabled={isRunning}
           onChange={onChangeProgram}
-          style={{ minHeight: "480px" }}
+          style={{ minHeight: "480px", ...textareaStyle }}
           value={vm.program}
         ></textarea>
       </div>
@@ -21,6 +25,7 @@ const Editor = () => {
           className="textarea"
           disabled={isRunning}
           onChange={onChangeInput}
+          style={textareaStyle}
           value={vm.inputStream}
         ></textarea>
       </div>

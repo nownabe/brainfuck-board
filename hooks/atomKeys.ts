@@ -6,6 +6,7 @@ const keys = {
     user: "auth.user",
     isInitializing: "auth.isInitializing",
   },
+  savedPrograms: "savedPrograms",
 };
 
 export default keys;
