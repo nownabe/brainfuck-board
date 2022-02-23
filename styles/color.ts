@@ -1,3 +1,5 @@
+// TODO: Delete unused colors.
+
 // export const black = "#000";
 //
 export const grayDarker = "#363636";
