@@ -181,7 +181,15 @@ export const useVm = () => {
     () => setVm((vm) => tickVm({ ...vm, memory: [...vm.memory] })),
     [setVm]
   );
-  const reset = useCallback(() => setVm(INITIAL_VM), [setVm]);
+  const reset = useCallback(
+    () =>
+      setVm((vm) => ({
+        ...INITIAL_VM,
+        inputStream: vm.inputStream,
+        program: vm.program,
+      })),
+    [setVm]
+  );
 
   return {
     vm,
