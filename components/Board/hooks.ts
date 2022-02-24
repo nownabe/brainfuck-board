@@ -52,6 +52,7 @@ export const useBoard = () => {
     (interval: number) => () => {
       if (isAutoStepInterrupted.current) {
         isAutoStepInterrupted.current = false;
+        setIsRunning(false);
         return;
       }
       step();
