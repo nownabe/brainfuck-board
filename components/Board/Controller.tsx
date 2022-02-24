@@ -6,8 +6,8 @@ import {
   faRotateLeft,
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import IconButton from "./IconButton";
 import SaveButton from "./SaveButton";
 import { useBoard } from "./hooks";
 
@@ -27,76 +27,64 @@ const Controller = ({}: Props) => {
   return (
     <div className="columns">
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faPlay}
           onClick={onClickRun}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faPlay} />
-          </span>
-          <span>Run</span>
-        </button>
+          Run
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faAnglesRight}
           onClick={onClickRunSlowly}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faAnglesRight} />
-          </span>
-          <span>Run Slowly</span>
-        </button>
+          Run Slowly
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faAngleRight}
           onClick={onClickRunSteply}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faAngleRight} />
-          </span>
-          <span>Run Steply</span>
-        </button>
+          Run Steply
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faForwardStep}
           onClick={onClickStep}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faForwardStep} />
-          </span>
-          <span>Step</span>
-        </button>
+          Step
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-warning"
           disabled={!isRunning}
+          icon={faStop}
           onClick={onClickStop}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faStop} />
-          </span>
-          <span>Stop</span>
-        </button>
+          Stop
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-warning"
           disabled={isRunning}
+          icon={faRotateLeft}
           onClick={onClickReset}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon={faRotateLeft} />
-          </span>
-          <span>Reset</span>
-        </button>
+          Reset
+        </IconButton>
       </div>
       <div className="column">
         <SaveButton />

@@ -1,7 +1,7 @@
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-modal";
 
+import IconButton from "./IconButton";
 import { useSaveButton } from "./hooks";
 
 Modal.setAppElement("#__next");
@@ -27,18 +27,16 @@ const SaveButton = () => {
 
   return (
     <>
-      <button
+      <IconButton
         className={`button is-fullwidth is-link${
           isPublishing ? " is-loading" : ""
         }`}
         disabled={disabled}
+        icon={faFileArrowUp}
         onClick={onClick}
       >
-        <span className="icon">
-          <FontAwesomeIcon icon={faFileArrowUp} />
-        </span>
-        <span>Save</span>
-      </button>
+        Save
+      </IconButton>
       <Modal
         contentLabel="Save modal"
         isOpen={isModalOpen}
