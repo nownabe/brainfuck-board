@@ -1,5 +1,7 @@
+import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
 
+import IconButton from "./IconButton";
 import { useSaveButton } from "./hooks";
 
 Modal.setAppElement("#__next");
@@ -25,15 +27,16 @@ const SaveButton = () => {
 
   return (
     <>
-      <button
+      <IconButton
         className={`button is-fullwidth is-link${
           isPublishing ? " is-loading" : ""
         }`}
         disabled={disabled}
+        icon={faFileArrowUp}
         onClick={onClick}
       >
         Save
-      </button>
+      </IconButton>
       <Modal
         contentLabel="Save modal"
         isOpen={isModalOpen}

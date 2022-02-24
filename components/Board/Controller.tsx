@@ -1,3 +1,13 @@
+import {
+  faAngleRight,
+  faAnglesRight,
+  faForwardStep,
+  faPlay,
+  faRotateLeft,
+  faStop,
+} from "@fortawesome/free-solid-svg-icons";
+
+import IconButton from "./IconButton";
 import SaveButton from "./SaveButton";
 import { useBoard } from "./hooks";
 
@@ -17,58 +27,64 @@ const Controller = ({}: Props) => {
   return (
     <div className="columns">
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faPlay}
           onClick={onClickRun}
         >
           Run
-        </button>
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faAnglesRight}
           onClick={onClickRunSlowly}
         >
           Run Slowly
-        </button>
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faAngleRight}
           onClick={onClickRunSteply}
         >
           Run Steply
-        </button>
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-primary"
           disabled={isRunning}
+          icon={faForwardStep}
           onClick={onClickStep}
         >
           Step
-        </button>
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-warning"
           disabled={!isRunning}
+          icon={faStop}
           onClick={onClickStop}
         >
           Stop
-        </button>
+        </IconButton>
       </div>
       <div className="column">
-        <button
+        <IconButton
           className="button is-fullwidth is-warning"
           disabled={isRunning}
+          icon={faRotateLeft}
           onClick={onClickReset}
         >
           Reset
-        </button>
+        </IconButton>
       </div>
       <div className="column">
         <SaveButton />
