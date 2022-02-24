@@ -1,3 +1,13 @@
+import {
+  faAngleRight,
+  faAnglesRight,
+  faForwardStep,
+  faPlay,
+  faRotateLeft,
+  faStop,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import SaveButton from "./SaveButton";
 import { useBoard } from "./hooks";
 
@@ -22,7 +32,10 @@ const Controller = ({}: Props) => {
           disabled={isRunning}
           onClick={onClickRun}
         >
-          Run
+          <span className="icon">
+            <FontAwesomeIcon icon={faPlay} />
+          </span>
+          <span>Run</span>
         </button>
       </div>
       <div className="column">
@@ -31,7 +44,10 @@ const Controller = ({}: Props) => {
           disabled={isRunning}
           onClick={onClickRunSlowly}
         >
-          Run Slowly
+          <span className="icon">
+            <FontAwesomeIcon icon={faAnglesRight} />
+          </span>
+          <span>Run Slowly</span>
         </button>
       </div>
       <div className="column">
@@ -40,7 +56,10 @@ const Controller = ({}: Props) => {
           disabled={isRunning}
           onClick={onClickRunSteply}
         >
-          Run Steply
+          <span className="icon">
+            <FontAwesomeIcon icon={faAngleRight} />
+          </span>
+          <span>Run Steply</span>
         </button>
       </div>
       <div className="column">
@@ -49,7 +68,10 @@ const Controller = ({}: Props) => {
           disabled={isRunning}
           onClick={onClickStep}
         >
-          Step
+          <span className="icon">
+            <FontAwesomeIcon icon={faForwardStep} />
+          </span>
+          <span>Step</span>
         </button>
       </div>
       <div className="column">
@@ -58,7 +80,10 @@ const Controller = ({}: Props) => {
           disabled={!isRunning}
           onClick={onClickStop}
         >
-          Stop
+          <span className="icon">
+            <FontAwesomeIcon icon={faStop} />
+          </span>
+          <span>Stop</span>
         </button>
       </div>
       <div className="column">
@@ -67,7 +92,10 @@ const Controller = ({}: Props) => {
           disabled={isRunning}
           onClick={onClickReset}
         >
-          Reset
+          <span className="icon">
+            <FontAwesomeIcon icon={faRotateLeft} />
+          </span>
+          <span>Reset</span>
         </button>
       </div>
       <div className="column">

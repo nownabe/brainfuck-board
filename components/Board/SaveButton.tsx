@@ -1,3 +1,5 @@
+import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-modal";
 
 import { useSaveButton } from "./hooks";
@@ -32,7 +34,10 @@ const SaveButton = () => {
         disabled={disabled}
         onClick={onClick}
       >
-        Save
+        <span className="icon">
+          <FontAwesomeIcon icon={faFileArrowUp} />
+        </span>
+        <span>Save</span>
       </button>
       <Modal
         contentLabel="Save modal"
