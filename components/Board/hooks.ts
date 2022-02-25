@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useAuth, useSavedPrograms } from "./../../hooks/firebase";
+import { useAuth, useSaveProgram } from "./../../hooks/firebase";
 
 import { useVm } from "./../../hooks/vm";
 
@@ -92,7 +92,7 @@ export const useBoard = () => {
 
 export const useSaveButton = () => {
   const { user } = useAuth();
-  const { saveProgram } = useSavedPrograms();
+  const { saveProgram } = useSaveProgram();
   const [isPublishing, setIsPublishing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
