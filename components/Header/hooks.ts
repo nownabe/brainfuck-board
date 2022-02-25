@@ -32,3 +32,14 @@ export const useUser = () => {
     onClickSignOut,
   };
 };
+
+export const useBurger = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const onClickBurger = () => setIsActive((isActive) => !isActive);
+
+  return {
+    isActive,
+    onClickBurger,
+  };
+};
