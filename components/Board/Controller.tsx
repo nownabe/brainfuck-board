@@ -7,7 +7,7 @@ import {
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
 
-import IconButton from "./IconButton";
+import IconButton from "../IconButton";
 import SaveButton from "./SaveButton";
 import { useBoard } from "./hooks";
 

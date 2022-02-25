@@ -1,4 +1,6 @@
+import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from "react";
+import IconButton from "../IconButton";
 import { usePrograms } from "./hooks";
 
 const codeStyle: CSSProperties = {
@@ -9,7 +11,7 @@ const codeStyle: CSSProperties = {
 };
 
 const Programs = () => {
-  const { user, programs, onClickDelete } = usePrograms();
+  const { user, programs, onClickDelete, onClickLoad } = usePrograms();
 
   if (!user) {
     return (
@@ -37,6 +39,15 @@ const Programs = () => {
             <pre style={codeStyle}>
               <code>{program.program}</code>
             </pre>
+            <div className="block mt-4">
+              <IconButton
+                className="button is-link"
+                icon={faFileArrowDown}
+                onClick={onClickLoad(program.program)}
+              >
+                Load
+              </IconButton>
+            </div>
           </div>
         </div>
       ))}

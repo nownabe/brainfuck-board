@@ -1,7 +1,7 @@
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
 
-import IconButton from "./IconButton";
+import IconButton from "../IconButton";
 import { useSaveButton } from "./hooks";
 
 Modal.setAppElement("#__next");
