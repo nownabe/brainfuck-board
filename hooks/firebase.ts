@@ -166,7 +166,6 @@ const listenSavedPrograms = (
 
 export const useSavedPrograms = () => {
   const { user } = useAuth();
-  const { vm } = useVm();
   const [savedPrograms, setSavedPrograms] = useRecoilState(savedProgramsAtom);
 
   const db = useMemo(() => getDatabase(app), []);
@@ -203,6 +202,35 @@ export const useSavedPrograms = () => {
     return () => unsubscribe();
   }, [user, db, addProgram, removeProgram]);
 
+  const deleteProgram = useCallback(
+    async (programId: string) => {
+      if (!user) {
+        return;
+      }
+      const updates: Record<string, null> = {};
+      updates[`/usersPrograms/${user.id}/${programId}`] = null;
+      updates[`/programs/${programId}`] = null;
+      await update(ref(db), updates);
+    },
+    [user, db]
+  );
+
+  const sortedSavedPrograms = Object.values(savedPrograms).sort(
+    (a, b) => b.created - a.created
+  );
+
+  return {
+    savedPrograms: sortedSavedPrograms,
+    deleteProgram,
+  };
+};
+
+export const useSaveProgram = () => {
+  const { user } = useAuth();
+  const { vm } = useVm();
+
+  const db = useMemo(() => getDatabase(app), []);
+
   const saveProgram = useCallback(
     async (title: string) => {
       if (!user) {
@@ -231,22 +259,5 @@ export const useSavedPrograms = () => {
     [user, vm, db]
   );
 
-  const deleteProgram = useCallback(
-    async (programId: string) => {
-      if (!user) {
-        return;
-      }
-      const updates: Record<string, null> = {};
-      updates[`/usersPrograms/${user.id}/${programId}`] = null;
-      updates[`/programs/${programId}`] = null;
-      await update(ref(db), updates);
-    },
-    [user, db]
-  );
-
-  return {
-    savedPrograms: Object.values(savedPrograms),
-    saveProgram,
-    deleteProgram,
-  };
+  return { saveProgram };
 };
