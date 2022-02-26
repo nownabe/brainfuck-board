@@ -7,7 +7,7 @@ const SamplePrograms = () => {
   return (
     <div className="section">
       <div className="container">
-        <LoadablePrograms programs={samplePrograms} />;
+        <LoadablePrograms programs={samplePrograms} />
       </div>
     </div>
   );
