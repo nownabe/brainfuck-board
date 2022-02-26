@@ -117,7 +117,7 @@ export const useAuth = () => {
   };
 };
 
-type SavedProgram = {
+export type SavedProgram = {
   id: string;
   authorId: string;
   authorName: string;

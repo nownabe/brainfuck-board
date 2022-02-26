@@ -1,17 +1,8 @@
-import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { CSSProperties } from "react";
-import IconButton from "../IconButton";
+import LoadablePrograms from "../LoadablePrograms";
 import { usePrograms } from "./hooks";
 
-const codeStyle: CSSProperties = {
-  backgroundColor: "transparent",
-  fontFamily: "'Inconsolata', monospace",
-  padding: 0,
-  fontSize: "1rem",
-};
-
 const Programs = () => {
-  const { user, programs, onClickDelete, onClickLoad } = usePrograms();
+  const { user, programs, onClickDelete } = usePrograms();
 
   if (!user) {
     return (
@@ -23,36 +14,7 @@ const Programs = () => {
     );
   }
 
-  return (
-    <>
-      {programs.map((program) => (
-        <div key={program.id} className="message">
-          <div className="message-header">
-            <p>{program.title}</p>
-            <button
-              aria-label="delete"
-              className="delete"
-              onClick={onClickDelete(program.id)}
-            ></button>
-          </div>
-          <div className="message-body">
-            <pre style={codeStyle}>
-              <code>{program.program}</code>
-            </pre>
-            <div className="block mt-4">
-              <IconButton
-                className="button is-link"
-                icon={faFileArrowDown}
-                onClick={onClickLoad(program.program)}
-              >
-                Load
-              </IconButton>
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
-  );
+  return <LoadablePrograms onClickDelete={onClickDelete} programs={programs} />;
 };
 
 export default Programs;
