@@ -4,7 +4,7 @@ import Account from "./Account";
 import MenuItem from "./MenuItem";
 import { useBurger } from "./hooks";
 
-type Tab = "board" | "saved" | "samples";
+type Tab = "board" | "saved" | "samples" | "tutorial";
 
 type Props = {
   tab: Tab;
@@ -52,6 +52,9 @@ const Header = ({ tab }: Props) => {
             </MenuItem>
             <MenuItem href="/samples" isActive={tab === "samples"}>
               Samples
+            </MenuItem>
+            <MenuItem href="/tutorial" isActive={tab === "tutorial"}>
+              Tutorial
             </MenuItem>
           </div>
           <div className="navbar-end">
