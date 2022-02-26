@@ -32,6 +32,10 @@ const samplePrograms: SampleProgram[] = [
     title: "Echo",
     program: `,[.,]`,
   },
+  {
+    title: "Print ASCII",
+    program: `.+[.+]`,
+  },
 ];
 
 export const useSamplePrograms = () => samplePrograms;
