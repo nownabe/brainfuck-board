@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":prHourlyLimiteNone"],
+  "extends": ["config:base", ":prHourlyLimitNone"],
   "dependencyDashboard": true,
   "labels": ["renovate"],
   "assigneesFromCodeOwners": true,
