@@ -18,6 +18,7 @@ type Instruction = (vm: VM) => VM;
 type Command = ">" | "<" | "+" | "-" | "," | "." | "[" | "]" | "?";
 
 const memorySize = 16;
+const cellMaxValue = 255;
 
 const NEXT: Command = ">";
 const PREV: Command = "<";
@@ -56,6 +57,8 @@ const INITIAL_VM: VM = {
   outputStream: "",
 };
 
+class VmTermination extends Error {}
+
 const vmState = atom<VM>({
   key: atomKeys.vm,
   default: INITIAL_VM,
@@ -66,7 +69,7 @@ const isCommand = (command: string): command is Command => {
 };
 
 const isTerminated = (vm: VM): boolean =>
-  vm.instructionPointer > vm.program.length;
+  vm.instructionPointer >= vm.program.length;
 
 const getCommand = (vm: VM): Command => {
   const command = vm.program[vm.instructionPointer];
@@ -86,14 +89,27 @@ const instructions = {
     return vm;
   },
   [INC]: (vm: VM): VM => {
-    vm.memory[vm.dataPointer]++;
+    const val = vm.memory[vm.dataPointer];
+    if (val === cellMaxValue) {
+      vm.memory[vm.dataPointer] = 0;
+    } else {
+      vm.memory[vm.dataPointer] = val + 1;
+    }
     return vm;
   },
   [DEC]: (vm: VM): VM => {
-    vm.memory[vm.dataPointer]--;
+    const val = vm.memory[vm.dataPointer];
+    if (val === 0) {
+      vm.memory[vm.dataPointer] = cellMaxValue;
+    } else {
+      vm.memory[vm.dataPointer] = val - 1;
+    }
     return vm;
   },
   [READ]: (vm: VM): VM => {
+    if (vm.inputPointer >= vm.inputStream.length) {
+      throw new VmTermination("end of input stream");
+    }
     vm.memory[vm.dataPointer] = vm.inputStream[vm.inputPointer++].charCodeAt(0);
     return vm;
   },
@@ -142,7 +158,16 @@ const getInstruction = (vm: VM): Instruction => instructions[getCommand(vm)];
 
 const tickVm = (vm: VM): VM => {
   const instruction = getInstruction(vm);
-  instruction(vm);
+  try {
+    instruction(vm);
+  } catch (error) {
+    if (error instanceof VmTermination) {
+      console.log(`Terminate VM because of ${error.message}`);
+      vm.instructionPointer = vm.program.length;
+    } else {
+      throw error;
+    }
+  }
   vm.instructionPointer++;
   return vm;
 };
