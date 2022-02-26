@@ -18,6 +18,7 @@ type Instruction = (vm: VM) => VM;
 type Command = ">" | "<" | "+" | "-" | "," | "." | "[" | "]" | "?";
 
 const memorySize = 16;
+const cellMaxValue = 255;
 
 const NEXT: Command = ">";
 const PREV: Command = "<";
@@ -88,11 +89,21 @@ const instructions = {
     return vm;
   },
   [INC]: (vm: VM): VM => {
-    vm.memory[vm.dataPointer]++;
+    const val = vm.memory[vm.dataPointer];
+    if (val === cellMaxValue) {
+      vm.memory[vm.dataPointer] = 0;
+    } else {
+      vm.memory[vm.dataPointer] = val + 1;
+    }
     return vm;
   },
   [DEC]: (vm: VM): VM => {
-    vm.memory[vm.dataPointer]--;
+    const val = vm.memory[vm.dataPointer];
+    if (val === 0) {
+      vm.memory[vm.dataPointer] = cellMaxValue;
+    } else {
+      vm.memory[vm.dataPointer] = val - 1;
+    }
     return vm;
   },
   [READ]: (vm: VM): VM => {
