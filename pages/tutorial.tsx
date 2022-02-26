@@ -59,7 +59,10 @@ const Tutorial: NextPage = () => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Brainfuck <FontAwesomeIcon icon={faExternalLink} />
+                  Brainfuck{" "}
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faExternalLink} />
+                  </span>
                 </a>{" "}
                 is an esoteric programming language. You can write programs with
                 only 8 commands:{" "}
