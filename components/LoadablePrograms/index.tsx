@@ -1,13 +1,18 @@
 import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from "react";
-import { SavedProgram } from "../../hooks/firebase";
 
 import IconButton from "../IconButton";
 import { useLoadablePrograms } from "./hooks";
 
+interface Program {
+  id?: string;
+  title: string;
+  program: string;
+}
+
 type Props = {
-  programs: SavedProgram[];
-  onClickDelete: (programId: string) => () => void;
+  programs: Program[];
+  onClickDelete?: (programId: string) => () => void;
 };
 
 const codeStyle: CSSProperties = {
@@ -22,15 +27,17 @@ const LoadablePrograms = ({ programs, onClickDelete }: Props) => {
 
   return (
     <>
-      {programs.map((program) => (
-        <div key={program.id} className="message">
+      {programs.map((program, i) => (
+        <div key={i} className="message">
           <div className="message-header">
             <p>{program.title}</p>
-            <button
-              aria-label="delete"
-              className="delete"
-              onClick={onClickDelete(program.id)}
-            />
+            {program.id && onClickDelete ? (
+              <button
+                aria-label="delete"
+                className="delete"
+                onClick={onClickDelete(program.id)}
+              />
+            ) : null}
           </div>
           <div className="message-body">
             <pre style={codeStyle}>
