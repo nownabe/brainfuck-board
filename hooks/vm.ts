@@ -66,7 +66,7 @@ const isCommand = (command: string): command is Command => {
 };
 
 const isTerminated = (vm: VM): boolean =>
-  vm.instructionPointer > vm.program.length;
+  vm.instructionPointer >= vm.program.length;
 
 const getCommand = (vm: VM): Command => {
   const command = vm.program[vm.instructionPointer];
