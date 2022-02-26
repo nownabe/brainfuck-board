@@ -56,6 +56,8 @@ const INITIAL_VM: VM = {
   outputStream: "",
 };
 
+class VmTermination extends Error {}
+
 const vmState = atom<VM>({
   key: atomKeys.vm,
   default: INITIAL_VM,
@@ -94,6 +96,9 @@ const instructions = {
     return vm;
   },
   [READ]: (vm: VM): VM => {
+    if (vm.inputPointer >= vm.inputStream.length) {
+      throw new VmTermination("end of input stream");
+    }
     vm.memory[vm.dataPointer] = vm.inputStream[vm.inputPointer++].charCodeAt(0);
     return vm;
   },
@@ -142,7 +147,16 @@ const getInstruction = (vm: VM): Instruction => instructions[getCommand(vm)];
 
 const tickVm = (vm: VM): VM => {
   const instruction = getInstruction(vm);
-  instruction(vm);
+  try {
+    instruction(vm);
+  } catch (error) {
+    if (error instanceof VmTermination) {
+      console.log(`Terminate VM because of ${error.message}`);
+      vm.instructionPointer = vm.program.length;
+    } else {
+      throw error;
+    }
+  }
   vm.instructionPointer++;
   return vm;
 };
