@@ -28,6 +28,10 @@ const samplePrograms: SampleProgram[] = [
 ---.-----.<.>+++++.+.<.>.------.<.> ++++++.----.<.> ++++.++.<.> -.-----.<.>
 +++++.+.<.>.--.`,
   },
+  {
+    title: "Echo",
+    program: `,[.,]`,
+  },
 ];
 
 export const useSamplePrograms = () => samplePrograms;
