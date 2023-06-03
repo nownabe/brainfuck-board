@@ -21,7 +21,7 @@
     "recoil": "0.6.1"
   },
   "devDependencies": {
-    "@types/node": "18.16.13",
+    "@types/node": "18.16.16",
     "@types/react": "17.0.43",
     "@types/react-modal": "3.13.1",
     "eslint": "8.12.0",
