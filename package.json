@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "18.17.4",
-    "@types/react": "17.0.63",
+    "@types/react": "17.0.64",
     "@types/react-modal": "3.13.1",
     "eslint": "8.46.0",
     "eslint-config-next": "12.3.4",
