@@ -16,7 +16,7 @@
     "next": "12.3.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-loader-spinner": "5.1.4",
+    "react-loader-spinner": "5.4.5",
     "react-modal": "3.14.4",
     "recoil": "0.7.7"
   },
