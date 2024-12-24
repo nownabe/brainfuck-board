@@ -17,13 +17,13 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-loader-spinner": "5.4.5",
-    "react-modal": "3.14.4",
+    "react-modal": "3.16.3",
     "recoil": "0.7.7"
   },
   "devDependencies": {
     "@types/node": "18.19.63",
     "@types/react": "17.0.83",
-    "@types/react-modal": "3.13.1",
+    "@types/react-modal": "3.16.3",
     "eslint": "8.57.1",
     "eslint-config-next": "12.3.4",
     "eslint-config-prettier": "8.10.0",
