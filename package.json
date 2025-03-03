@@ -14,15 +14,15 @@
     "@fortawesome/react-fontawesome": "0.1.17",
     "firebase": "9.23.0",
     "next": "12.3.4",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-loader-spinner": "5.4.5",
     "react-modal": "3.16.3",
     "recoil": "0.7.7"
   },
   "devDependencies": {
     "@types/node": "18.19.74",
-    "@types/react": "17.0.83",
+    "@types/react": "19.0.10",
     "@types/react-modal": "3.16.3",
     "eslint": "8.57.1",
     "eslint-config-next": "12.3.4",
